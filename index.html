@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>티오더 매뉴얼</title>
   <style>
+    :root {
+      --base-font-size: 16px;
+      --bg-color: #246FF4;
+      --text-color: white;
+    }
+
     body {
       margin: 0;
       padding: 1.5rem;
-      background-color: #246FF4;
       font-family: sans-serif;
-      color: white;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-size: var(--base-font-size);
+      transition: all 0.2s ease;
     }
 
     .title {
@@ -38,6 +46,32 @@
     .menu-button:hover {
       background-color: #e5e5e5;
     }
+
+    .footer {
+      margin-top: 4rem;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      padding-top: 1rem;
+    }
+
+    .footer-label {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .text-size-button {
+      background-color: white;
+      color: #246FF4;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
+      font-weight: bold;
+      border-radius: 0.4rem;
+      cursor: pointer;
+    }
+
+    .text-size-button:hover {
+      background-color: #e0e0e0;
+    }
   </style>
 </head>
 <body>
@@ -51,5 +85,50 @@
   <button class="menu-button">보조 장비</button>
   <button class="menu-button">기타</button>
 
+  <div class="footer">
+    <div class="footer-label">글자 크기</div>
+    <button class="text-size-button" onclick="setFontSize('normal')">보통</button>
+    <button class="text-size-button" onclick="setFontSize('large')">크게</button>
+    <button class="text-size-button" onclick="setFontSize('xlarge')">더 크게</button>
+    <button class="text-size-button" onclick="toggleContrast()">대비</button>
+  </div>
+
+  <script>
+    function setFontSize(size) {
+      let fontSize = '16px';
+      if (size === 'large') fontSize = '20px';
+      else if (size === 'xlarge') fontSize = '24px';
+
+      document.documentElement.style.setProperty('--base-font-size', fontSize);
+      localStorage.setItem('fontSize', fontSize);
+    }
+
+    function toggleContrast() {
+      const currentBg = getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim();
+      if (currentBg === '#246FF4') {
+        document.documentElement.style.setProperty('--bg-color', '#000');
+        document.documentElement.style.setProperty('--text-color', '#FFF');
+        localStorage.setItem('contrast', 'high');
+      } else {
+        document.documentElement.style.setProperty('--bg-color', '#246FF4');
+        document.documentElement.style.setProperty('--text-color', '#FFF');
+        localStorage.setItem('contrast', 'normal');
+      }
+    }
+
+    // 페이지 로드 시 설정 복원
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedFont = localStorage.getItem('fontSize');
+      if (savedFont) {
+        document.documentElement.style.setProperty('--base-font-size', savedFont);
+      }
+
+      const contrast = localStorage.getItem('contrast');
+      if (contrast === 'high') {
+        document.documentElement.style.setProperty('--bg-color', '#000');
+        document.documentElement.style.setProperty('--text-color', '#FFF');
+      }
+    });
+  </script>
 </body>
 </html>
