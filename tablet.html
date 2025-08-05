@@ -14,16 +14,17 @@
 
     html, body {
       margin: 0;
-      padding: 1rem;
+      padding: 0;
       font-family: sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
-      zoom: var(--zoom-scale);
       overflow-x: hidden;
     }
 
-    .category-container {
-      padding: 0 20px;
+    .main-content {
+      transform: scale(var(--zoom-scale));
+      transform-origin: top left;
+      padding: 1rem 20px;
     }
 
     .menu-button {
@@ -47,7 +48,6 @@
       background-color: #e5e5e5;
     }
 
-    /* 처음으로 버튼 */
     .top-home-button {
       position: fixed;
       top: 1rem;
@@ -68,7 +68,6 @@
       background-color: #e0e0e0;
     }
 
-    /* 하단 고정 버튼 */
     .footer-fixed {
       position: fixed;
       bottom: 0;
@@ -117,22 +116,22 @@
 <body>
   <a href="index.html" class="top-home-button">처음으로</a>
 
-  <div class="category-container" style="padding-top: 3rem; padding-bottom: 6.5rem;">
+  <div class="main-content" style="padding-bottom: 6.5rem;">
+    <h1>태블릿 기기 설정</h1>
     <button class="menu-button">전원 예약시간 ON/OFF</button>
-    <button class="menu-button">와이파이 설정</button>
+<button class="menu-button">와이파이 설정</button>
   </div>
 
   <script src="common.js"></script>
-</body>
 
-<!-- 확대 영향 받지 않도록 body 밖에 고정 -->
-<div class="footer-fixed">
-  <div class="footer-label">글자 크기</div>
-  <div class="footer-buttons">
-    <button class="text-size-button" onclick="setZoom(1)">보통</button>
-    <button class="text-size-button" onclick="setZoom(1.2)">크게</button>
-    <button class="text-size-button" onclick="setZoom(1.4)">더 크게</button>
-    <button class="text-size-button" onclick="toggleContrast()">대비</button>
+  <div class="footer-fixed">
+    <div class="footer-label">글자 크기</div>
+    <div class="footer-buttons">
+      <button class="text-size-button" onclick="setZoom(1)">보통</button>
+      <button class="text-size-button" onclick="setZoom(1.2)">크게</button>
+      <button class="text-size-button" onclick="setZoom(1.4)">더 크게</button>
+      <button class="text-size-button" onclick="toggleContrast()">대비</button>
+    </div>
   </div>
-</div>
+</body>
 </html>
