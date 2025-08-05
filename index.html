@@ -3,24 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>매뉴얼 사이트</title>
+  <title>티오더 매뉴얼</title>
   <style>
     body {
       margin: 0;
+      padding: 1.5rem;
       background-color: #246FF4;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       font-family: sans-serif;
+      color: white;
     }
-    h1 {
-      font-size: 2.5rem;
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+
+    .menu-button {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      background-color: white;
+      color: #246FF4;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s ease;
+    }
+
+    .menu-button:hover {
+      background-color: #e5e5e5;
     }
   </style>
 </head>
 <body>
-  <h1>파란 배경 테스트</h1>
+  <div class="title">TORDER 매뉴얼</div>
+
+  <button class="menu-button">티오더 프로세스</button>
+  <button class="menu-button">태블릿 기기 설정</button>
+  <button class="menu-button">티오거 기능</button>
+  <button class="menu-button">태블릿</button>
+  <button class="menu-button">POS</button>
+  <button class="menu-button">보조 장비</button>
+  <button class="menu-button">기타</button>
+
 </body>
 </html>
