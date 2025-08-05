@@ -9,6 +9,7 @@
       --zoom-scale: 1;
       --bg-color: #246FF4;
       --text-color: white;
+      --button-text-color: #246FF4;
     }
 
     body {
@@ -20,7 +21,7 @@
       transform: scale(var(--zoom-scale));
       transform-origin: top left;
       width: 100%;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease;
     }
 
     .title {
@@ -49,26 +50,43 @@
       background-color: #e5e5e5;
     }
 
-    .footer {
-      margin-top: 4rem;
-      border-top: 1px solid rgba(255,255,255,0.3);
-      padding-top: 1rem;
+    .footer-fixed {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 100;
+      transform: scale(1); /* 고정된 요소는 해상도 확대 영향 안 받게 */
     }
 
     .footer-label {
       font-weight: bold;
       margin-bottom: 0.5rem;
+      color: #000;
+    }
+
+    .footer-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .text-size-button {
       background-color: white;
-      color: #246FF4;
+      color: var(--button-text-color);
       border: none;
       padding: 0.5rem 1rem;
-      margin-right: 0.5rem;
+      margin: 0.25rem;
       font-weight: bold;
       border-radius: 0.4rem;
       cursor: pointer;
+      font-size: 1rem;
     }
 
     .text-size-button:hover {
@@ -87,12 +105,14 @@
   <button class="menu-button">보조 장비</button>
   <button class="menu-button">기타</button>
 
-  <div class="footer">
+  <div class="footer-fixed">
     <div class="footer-label">글자 크기</div>
-    <button class="text-size-button" onclick="setZoom(1)">보통</button>
-    <button class="text-size-button" onclick="setZoom(1.2)">크게</button>
-    <button class="text-size-button" onclick="setZoom(1.4)">더 크게</button>
-    <button class="text-size-button" onclick="toggleContrast()">대비</button>
+    <div class="footer-buttons">
+      <button class="text-size-button" onclick="setZoom(1)">보통</button>
+      <button class="text-size-button" onclick="setZoom(1.2)">크게</button>
+      <button class="text-size-button" onclick="setZoom(1.4)">더 크게</button>
+      <button class="text-size-button" onclick="toggleContrast()">대비</button>
+    </div>
   </div>
 
   <script>
@@ -106,15 +126,16 @@
       if (currentBg === '#246FF4') {
         document.documentElement.style.setProperty('--bg-color', '#000');
         document.documentElement.style.setProperty('--text-color', '#FFF');
+        document.documentElement.style.setProperty('--button-text-color', '#000');
         localStorage.setItem('contrast', 'high');
       } else {
         document.documentElement.style.setProperty('--bg-color', '#246FF4');
         document.documentElement.style.setProperty('--text-color', '#FFF');
+        document.documentElement.style.setProperty('--button-text-color', '#246FF4');
         localStorage.setItem('contrast', 'normal');
       }
     }
 
-    // 페이지 로드 시 설정 복원
     window.addEventListener('DOMContentLoaded', () => {
       const savedZoom = localStorage.getItem('zoom');
       if (savedZoom) {
@@ -125,6 +146,7 @@
       if (contrast === 'high') {
         document.documentElement.style.setProperty('--bg-color', '#000');
         document.documentElement.style.setProperty('--text-color', '#FFF');
+        document.documentElement.style.setProperty('--button-text-color', '#000');
       }
     });
   </script>
