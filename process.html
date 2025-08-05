@@ -48,32 +48,42 @@
       background-color: #eee;
     }
 
-    /* 확대 비적용을 위한 외부 래퍼 */
-    .fixed-zoom {
-      all: initial;
-      * {
-        all: unset;
-      }
+    /* 처음으로 버튼 */
+    .top-home-button {
       position: fixed;
-      z-index: 9999;
-      font-family: sans-serif;
+      top: 1rem;
+      right: 1rem;
+      background-color: white;
+      color: var(--button-text-color);
+      border: none;
+      padding: 0.6rem 1rem;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      z-index: 1000;
+      font-size: 14px;
     }
 
+    .top-home-button:hover {
+      background-color: #e0e0e0;
+    }
+
+    /* 하단 고정 버튼 (zoom 영향 안 받도록 body 밖에 있음) */
     .footer-fixed {
-      all: unset;
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      width: 100%;
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(255, 255, 255, 0.95);
       padding: 1rem;
       border-top: 1px solid rgba(0, 0, 0, 0.2);
       display: flex;
       flex-direction: column;
       align-items: center;
-      z-index: 100;
+      z-index: 999;
       font-size: 14px;
+      font-family: sans-serif;
     }
 
     .footer-label {
@@ -103,27 +113,6 @@
     .text-size-button:hover {
       background-color: #e0e0e0;
     }
-
-    /* 처음으로 버튼 고정 */
-    .top-home-button {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background-color: white;
-      color: var(--button-text-color);
-      border: none;
-      padding: 0.6rem 1rem;
-      font-weight: bold;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      text-decoration: none;
-      z-index: 1000;
-      font-size: 14px;
-    }
-
-    .top-home-button:hover {
-      background-color: #e0e0e0;
-    }
   </style>
 </head>
 <body>
@@ -133,17 +122,17 @@
   <br />
   <a href="index.html" class="back-button">← 돌아가기</a>
 
-  <!-- 확대에 영향 안 받는 고정 하단 버튼 -->
-  <div class="fixed-zoom footer-fixed">
-    <div class="footer-label">글자 크기</div>
-    <div class="footer-buttons">
-      <button class="text-size-button" onclick="setZoom(1)">보통</button>
-      <button class="text-size-button" onclick="setZoom(1.2)">크게</button>
-      <button class="text-size-button" onclick="setZoom(1.4)">더 크게</button>
-      <button class="text-size-button" onclick="toggleContrast()">대비</button>
-    </div>
-  </div>
-
   <script src="common.js"></script>
 </body>
+
+<!-- ✅ zoom 영향을 받지 않도록 body 밖에 위치 -->
+<div class="footer-fixed">
+  <div class="footer-label">글자 크기</div>
+  <div class="footer-buttons">
+    <button class="text-size-button" onclick="setZoom(1)">보통</button>
+    <button class="text-size-button" onclick="setZoom(1.2)">크게</button>
+    <button class="text-size-button" onclick="setZoom(1.4)">더 크게</button>
+    <button class="text-size-button" onclick="toggleContrast()">대비</button>
+  </div>
+</div>
 </html>
