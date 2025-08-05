@@ -19,6 +19,7 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       zoom: var(--zoom-scale);
+      overflow-x: hidden;
     }
 
     img {
@@ -60,13 +61,14 @@
       flex-direction: column;
       align-items: center;
       z-index: 100;
-      zoom: 1;
+      zoom: 1 !important;
     }
 
     .footer-label {
       font-weight: bold;
       margin-bottom: 0.5rem;
       color: #000;
+      font-size: 1rem;
     }
 
     .footer-buttons {
@@ -90,9 +92,31 @@
     .text-size-button:hover {
       background-color: #e0e0e0;
     }
+
+    /* 우측 상단 고정 버튼 */
+    .top-home-button {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background-color: white;
+      color: var(--button-text-color);
+      border: none;
+      padding: 0.6rem 1rem;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      z-index: 1000;
+      font-size: 14px;
+    }
+
+    .top-home-button:hover {
+      background-color: #e0e0e0;
+    }
   </style>
 </head>
 <body>
+  <a href="index.html" class="top-home-button">처음으로</a>
   <h1>티오더 프로세스</h1>
   <img src="torder-process.png" alt="티오더 프로세스 이미지">
   <br />
