@@ -19,18 +19,17 @@
     html, body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden; /* 좌우 스크롤 방지 */
+      overflow-x: hidden;
       background-color: var(--bg-color);
       color: var(--text-color);
       font-family: sans-serif;
     }
 
     .main-content {
-      transform: scale(var(--zoom-scale));
-      transform-origin: top left;
       width: 100%;
       padding-top: 1.5rem;
-      padding-bottom: 6.5rem; /* 고정된 하단 버튼 공간 확보 */
+      padding-bottom: 6.5rem;
+      zoom: var(--zoom-scale); /* ⚠️ transform 대신 zoom 사용 (모바일 브라우저 호환성은 낮지만 문제 해결에 유리) */
     }
 
     .title {
@@ -52,12 +51,13 @@
       font-size: 1.1rem;
       font-weight: bold;
       background-color: white;
-      color: #246FF4;
+      color: var(--button-text-color); /* 변수로 제어 */
       border: none;
       border-radius: 0.5rem;
       cursor: pointer;
       text-align: left;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease, color 0.2s ease;
+      word-break: keep-all;
     }
 
     .menu-button:hover {
@@ -77,7 +77,7 @@
       flex-direction: column;
       align-items: center;
       z-index: 100;
-      transform: scale(1); /* 해상도 확대 영향 받지 않게 */
+      zoom: 1;
     }
 
     .footer-label {
@@ -141,16 +141,16 @@
     }
 
     function toggleContrast() {
-      const currentBg = getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim();
-      if (currentBg === '#246FF4') {
+      const isDark = getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim() === '#246FF4';
+      if (isDark) {
         document.documentElement.style.setProperty('--bg-color', '#000');
         document.documentElement.style.setProperty('--text-color', '#FFF');
-        document.documentElement.style.setProperty('--button-text-color', '#000');
+        document.documentElement.style.setProperty('--button-text-color', '#FFF'); // 버튼 글자도 흰색
         localStorage.setItem('contrast', 'high');
       } else {
         document.documentElement.style.setProperty('--bg-color', '#246FF4');
         document.documentElement.style.setProperty('--text-color', '#FFF');
-        document.documentElement.style.setProperty('--button-text-color', '#246FF4');
+        document.documentElement.style.setProperty('--button-text-color', '#246FF4'); // 원래대로
         localStorage.setItem('contrast', 'normal');
       }
     }
@@ -165,7 +165,7 @@
       if (contrast === 'high') {
         document.documentElement.style.setProperty('--bg-color', '#000');
         document.documentElement.style.setProperty('--text-color', '#FFF');
-        document.documentElement.style.setProperty('--button-text-color', '#000');
+        document.documentElement.style.setProperty('--button-text-color', '#FFF');
       }
     });
   </script>
