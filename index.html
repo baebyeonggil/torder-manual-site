@@ -6,7 +6,7 @@
   <title>티오더 매뉴얼</title>
   <style>
     :root {
-      --base-font-size: 16px;
+      --zoom-scale: 1;
       --bg-color: #246FF4;
       --text-color: white;
     }
@@ -17,8 +17,10 @@
       font-family: sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
-      font-size: var(--base-font-size);
-      transition: all 0.2s ease;
+      transform: scale(var(--zoom-scale));
+      transform-origin: top left;
+      width: 100%;
+      transition: transform 0.2s ease;
     }
 
     .title {
@@ -87,20 +89,16 @@
 
   <div class="footer">
     <div class="footer-label">글자 크기</div>
-    <button class="text-size-button" onclick="setFontSize('normal')">보통</button>
-    <button class="text-size-button" onclick="setFontSize('large')">크게</button>
-    <button class="text-size-button" onclick="setFontSize('xlarge')">더 크게</button>
+    <button class="text-size-button" onclick="setZoom(1)">보통</button>
+    <button class="text-size-button" onclick="setZoom(1.2)">크게</button>
+    <button class="text-size-button" onclick="setZoom(1.4)">더 크게</button>
     <button class="text-size-button" onclick="toggleContrast()">대비</button>
   </div>
 
   <script>
-    function setFontSize(size) {
-      let fontSize = '16px';
-      if (size === 'large') fontSize = '20px';
-      else if (size === 'xlarge') fontSize = '24px';
-
-      document.documentElement.style.setProperty('--base-font-size', fontSize);
-      localStorage.setItem('fontSize', fontSize);
+    function setZoom(scale) {
+      document.documentElement.style.setProperty('--zoom-scale', scale);
+      localStorage.setItem('zoom', scale);
     }
 
     function toggleContrast() {
@@ -118,9 +116,9 @@
 
     // 페이지 로드 시 설정 복원
     window.addEventListener('DOMContentLoaded', () => {
-      const savedFont = localStorage.getItem('fontSize');
-      if (savedFont) {
-        document.documentElement.style.setProperty('--base-font-size', savedFont);
+      const savedZoom = localStorage.getItem('zoom');
+      if (savedZoom) {
+        document.documentElement.style.setProperty('--zoom-scale', savedZoom);
       }
 
       const contrast = localStorage.getItem('contrast');
