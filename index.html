@@ -14,7 +14,7 @@
 
     body {
       margin: 0;
-      padding: 1.5rem;
+      padding-top: 1.5rem;
       font-family: sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
@@ -28,6 +28,11 @@
       font-size: 1.8rem;
       font-weight: bold;
       margin-bottom: 2rem;
+      padding-left: 20px;
+    }
+
+    .category-container {
+      padding: 0 20px;
     }
 
     .menu-button {
@@ -62,7 +67,7 @@
       flex-direction: column;
       align-items: center;
       z-index: 100;
-      transform: scale(1); /* 고정된 요소는 해상도 확대 영향 안 받게 */
+      transform: scale(1); /* 고정된 요소는 확대 영향 안 받게 */
     }
 
     .footer-label {
@@ -97,13 +102,15 @@
 <body>
   <div class="title">TORDER 매뉴얼</div>
 
-  <button class="menu-button">티오더 프로세스</button>
-  <button class="menu-button">태블릿 기기 설정</button>
-  <button class="menu-button">티오거 기능</button>
-  <button class="menu-button">태블릿</button>
-  <button class="menu-button">POS</button>
-  <button class="menu-button">보조 장비</button>
-  <button class="menu-button">기타</button>
+  <div class="category-container">
+    <button class="menu-button">티오더 프로세스</button>
+    <button class="menu-button">태블릿 기기 설정</button>
+    <button class="menu-button">티오거 기능</button>
+    <button class="menu-button">태블릿</button>
+    <button class="menu-button">POS</button>
+    <button class="menu-button">보조 장비</button>
+    <button class="menu-button">기타</button>
+  </div>
 
   <div class="footer-fixed">
     <div class="footer-label">글자 크기</div>
