@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>태블릿 기기 설정</title>
+  <style>
+    :root {
+      --zoom-scale: 1;
+      --bg-color: #246FF4;
+      --text-color: white;
+      --button-text-color: #246FF4;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 1rem;
+      font-family: sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      zoom: var(--zoom-scale);
+      overflow-x: hidden;
+    }
+
+    .category-container {
+      padding: 0 20px;
+    }
+
+    .menu-button {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      background-color: white;
+      color: var(--button-text-color);
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      text-align: left;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .menu-button:hover {
+      background-color: #e5e5e5;
+    }
+
+    /* 처음으로 버튼 */
+    .top-home-button {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background-color: white;
+      color: var(--button-text-color);
+      border: none;
+      padding: 0.6rem 1rem;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      z-index: 1000;
+      font-size: 14px;
+    }
+
+    .top-home-button:hover {
+      background-color: #e0e0e0;
+    }
+
+    /* 하단 고정 버튼 */
+    .footer-fixed {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 999;
+      font-size: 14px;
+      font-family: sans-serif;
+    }
+
+    .footer-label {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #000;
+    }
+
+    .footer-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .text-size-button {
+      background-color: white;
+      color: var(--button-text-color);
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
+      font-weight: bold;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .text-size-button:hover {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="top-home-button">처음으로</a>
+
+  <div class="category-container" style="padding-top: 3rem; padding-bottom: 6.5rem;">
+    <button class="menu-button">전원 예약시간 ON/OFF</button>
+    <button class="menu-button">와이파이 설정</button>
+  </div>
+
+  <script src="common.js"></script>
+</body>
+
+<!-- 확대 영향 받지 않도록 body 밖에 고정 -->
+<div class="footer-fixed">
+  <div class="footer-label">글자 크기</div>
+  <div class="footer-buttons">
+    <button class="text-size-button" onclick="setZoom(1)">보통</button>
+    <button class="text-size-button" onclick="setZoom(1.2)">크게</button>
+    <button class="text-size-button" onclick="setZoom(1.4)">더 크게</button>
+    <button class="text-size-button" onclick="toggleContrast()">대비</button>
+  </div>
+</div>
+</html>
