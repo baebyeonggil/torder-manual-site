@@ -29,7 +29,7 @@
       width: 100%;
       padding-top: 1.5rem;
       padding-bottom: 6.5rem;
-      zoom: var(--zoom-scale); /* ⚠️ transform 대신 zoom 사용 (모바일 브라우저 호환성은 낮지만 문제 해결에 유리) */
+      zoom: var(--zoom-scale);
     }
 
     .title {
@@ -51,13 +51,13 @@
       font-size: 1.1rem;
       font-weight: bold;
       background-color: white;
-      color: var(--button-text-color); /* 변수로 제어 */
+      color: var(--button-text-color);
       border: none;
       border-radius: 0.5rem;
       cursor: pointer;
       text-align: left;
+      text-decoration: none;
       transition: background 0.2s ease, color 0.2s ease;
-      word-break: keep-all;
     }
 
     .menu-button:hover {
@@ -114,7 +114,7 @@
     <div class="title">TORDER 매뉴얼</div>
 
     <div class="category-container">
-      <button class="menu-button">티오더 프로세스</button>
+      <a href="process.html" class="menu-button">티오더 프로세스</a>
       <button class="menu-button">태블릿 기기 설정</button>
       <button class="menu-button">티오거 기능</button>
       <button class="menu-button">태블릿</button>
@@ -141,16 +141,16 @@
     }
 
     function toggleContrast() {
-      const isDark = getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim() === '#246FF4';
-      if (isDark) {
+      const isLight = getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim() === '#246FF4';
+      if (isLight) {
         document.documentElement.style.setProperty('--bg-color', '#000');
         document.documentElement.style.setProperty('--text-color', '#FFF');
-        document.documentElement.style.setProperty('--button-text-color', '#FFF'); // 버튼 글자도 흰색
+        document.documentElement.style.setProperty('--button-text-color', '#000'); // ✅ 검정 텍스트
         localStorage.setItem('contrast', 'high');
       } else {
         document.documentElement.style.setProperty('--bg-color', '#246FF4');
         document.documentElement.style.setProperty('--text-color', '#FFF');
-        document.documentElement.style.setProperty('--button-text-color', '#246FF4'); // 원래대로
+        document.documentElement.style.setProperty('--button-text-color', '#246FF4');
         localStorage.setItem('contrast', 'normal');
       }
     }
@@ -165,7 +165,7 @@
       if (contrast === 'high') {
         document.documentElement.style.setProperty('--bg-color', '#000');
         document.documentElement.style.setProperty('--text-color', '#FFF');
-        document.documentElement.style.setProperty('--button-text-color', '#FFF');
+        document.documentElement.style.setProperty('--button-text-color', '#000');
       }
     });
   </script>
