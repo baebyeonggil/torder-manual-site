@@ -32,13 +32,6 @@
       zoom: var(--zoom-scale);
     }
 
-    .title {
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 2rem;
-      padding-left: 20px;
-    }
-
     .category-container {
       padding: 0 20px;
     }
@@ -111,12 +104,10 @@
 </head>
 <body>
   <div class="main-content">
-    <div class="title">TORDER 매뉴얼</div>
-
     <div class="category-container">
       <a href="process.html" class="menu-button">티오더 프로세스</a>
       <button class="menu-button">태블릿 기기 설정</button>
-      <button class="menu-button">티오거 기능</button>
+      <button class="menu-button">티오더 기능</button> <!-- 수정됨 -->
       <button class="menu-button">태블릿</button>
       <button class="menu-button">POS</button>
       <button class="menu-button">보조 장비</button>
@@ -145,7 +136,7 @@
       if (isLight) {
         document.documentElement.style.setProperty('--bg-color', '#000');
         document.documentElement.style.setProperty('--text-color', '#FFF');
-        document.documentElement.style.setProperty('--button-text-color', '#000'); // ✅ 검정 텍스트
+        document.documentElement.style.setProperty('--button-text-color', '#000'); // 다크모드 버튼 글자 검정
         localStorage.setItem('contrast', 'high');
       } else {
         document.documentElement.style.setProperty('--bg-color', '#246FF4');
