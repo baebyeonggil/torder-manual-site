@@ -1,20 +1,22 @@
 const main = document.querySelector('main');
-const zoomButtons = document.querySelectorAll('.mode-btn[data-zoom]');
-const themeButton = document.querySelector('.mode-btn[data-theme]');
+const zoomButtons = document.querySelectorAll('.footer-btn[data-zoom]');
+const themeButton = document.querySelector('.footer-btn[data-theme]');
 
 // 초기 상태 적용
-applyZoom(localStorage.getItem('zoom') || '1.0');
-applyTheme(localStorage.getItem('theme') || 'light');
-updateZoomActiveButton(localStorage.getItem('zoom') || '1.0');
-updateThemeActiveButton(localStorage.getItem('theme') || 'light');
+const zoom = localStorage.getItem('zoom') || '1.0';
+const theme = localStorage.getItem('theme') || 'light';
+applyZoom(zoom);
+applyTheme(theme);
+updateZoomUI(zoom);
+updateThemeUI(theme);
 
-// 확대 기능
+// 확대 버튼 이벤트
 zoomButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-    const zoom = btn.getAttribute('data-zoom');
-    applyZoom(zoom);
-    localStorage.setItem('zoom', zoom);
-    updateZoomActiveButton(zoom);
+    const selectedZoom = btn.getAttribute('data-zoom');
+    localStorage.setItem('zoom', selectedZoom);
+    applyZoom(selectedZoom);
+    updateZoomUI(selectedZoom);
   });
 });
 
@@ -23,31 +25,26 @@ function applyZoom(scale) {
   main.style.transformOrigin = 'top left';
 }
 
-function updateZoomActiveButton(scale) {
+function updateZoomUI(scale) {
   zoomButtons.forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-zoom') === scale);
   });
 }
 
-// 다크모드 기능
+// 테마 버튼 이벤트
 themeButton.addEventListener('click', () => {
-  const currentTheme = localStorage.getItem('theme') || 'light';
-  const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  applyTheme(nextTheme);
-  localStorage.setItem('theme', nextTheme);
-  updateThemeActiveButton(nextTheme);
+  const current = localStorage.getItem('theme') || 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', next);
+  applyTheme(next);
+  updateThemeUI(next);
 });
 
 function applyTheme(theme) {
-  if (theme === 'dark') {
-    document.body.style.backgroundColor = '#333333';
-    document.body.style.color = '#ffffff';
-  } else {
-    document.body.style.backgroundColor = '#ffffff';
-    document.body.style.color = '#000000';
-  }
+  document.body.style.backgroundColor = theme === 'dark' ? '#333333' : '#ffffff';
+  document.body.style.color = theme === 'dark' ? '#ffffff' : '#000000';
 }
 
-function updateThemeActiveButton(theme) {
+function updateThemeUI(theme) {
   themeButton.classList.toggle('active', theme === 'dark');
 }
