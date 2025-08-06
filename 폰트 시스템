@@ -1,0 +1,51 @@
+/* Pretendard 웹폰트 불러오기 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/pretendard.css');
+
+/* 전체 기본 설정 */
+body {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 32px;
+  font-weight: 400; /* Regular */
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* 타이틀 (64px, Bold) */
+.title {
+  font-size: 64px;
+  font-weight: 700;
+  margin: 0.5em 0;
+}
+
+/* 서브 타이틀 (48px, SemiBold) */
+.subtitle {
+  font-size: 48px;
+  font-weight: 600;
+  margin: 0.5em 0;
+}
+
+/* 본문 텍스트 (32px, Regular) */
+.text {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 1em 0;
+}
+
+/* 본문 넘버링 (동그라미 안에, Bold 32px) */
+.number-circle {
+  display: inline-block;
+  font-size: 32px;
+  font-weight: 700;
+  width: auto;
+  padding: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1;
+}
