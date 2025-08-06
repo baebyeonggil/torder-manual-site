@@ -1,37 +1,53 @@
-const body = document.body;
+const main = document.querySelector('main');
+const zoomButtons = document.querySelectorAll('.mode-btn[data-zoom]');
+const themeButton = document.querySelector('.mode-btn[data-theme]');
 
-// 확대 상태
-if (localStorage.getItem("zoom") === "large") {
-  body.style.fontSize = "20px";
-}
+// 초기 상태 적용
+applyZoom(localStorage.getItem('zoom') || '1.0');
+applyTheme(localStorage.getItem('theme') || 'light');
+updateZoomActiveButton(localStorage.getItem('zoom') || '1.0');
+updateThemeActiveButton(localStorage.getItem('theme') || 'light');
 
-// 다크모드 상태
-if (localStorage.getItem("theme") === "dark") {
-  body.style.backgroundColor = "#333333";
-  body.style.color = "#ffffff";
-}
-
-// 확대 버튼
-document.getElementById("zoomToggle").addEventListener("click", () => {
-  if (body.style.fontSize === "20px") {
-    body.style.fontSize = "16px";
-    localStorage.setItem("zoom", "normal");
-  } else {
-    body.style.fontSize = "20px";
-    localStorage.setItem("zoom", "large");
-  }
+// 확대 기능
+zoomButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const zoom = btn.getAttribute('data-zoom');
+    applyZoom(zoom);
+    localStorage.setItem('zoom', zoom);
+    updateZoomActiveButton(zoom);
+  });
 });
 
-// 다크모드 버튼
-document.getElementById("themeToggle").addEventListener("click", () => {
-  const isDark = body.style.backgroundColor === "rgb(51, 51, 51)";
-  if (isDark) {
-    body.style.backgroundColor = "#ffffff";
-    body.style.color = "#000000";
-    localStorage.setItem("theme", "light");
-  } else {
-    body.style.backgroundColor = "#333333";
-    body.style.color = "#ffffff";
-    localStorage.setItem("theme", "dark");
-  }
+function applyZoom(scale) {
+  main.style.transform = `scale(${scale})`;
+  main.style.transformOrigin = 'top left';
+}
+
+function updateZoomActiveButton(scale) {
+  zoomButtons.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-zoom') === scale);
+  });
+}
+
+// 다크모드 기능
+themeButton.addEventListener('click', () => {
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  applyTheme(nextTheme);
+  localStorage.setItem('theme', nextTheme);
+  updateThemeActiveButton(nextTheme);
 });
+
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    document.body.style.backgroundColor = '#333333';
+    document.body.style.color = '#ffffff';
+  } else {
+    document.body.style.backgroundColor = '#ffffff';
+    document.body.style.color = '#000000';
+  }
+}
+
+function updateThemeActiveButton(theme) {
+  themeButton.classList.toggle('active', theme === 'dark');
+}
