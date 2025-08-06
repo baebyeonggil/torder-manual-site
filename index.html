@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=360, initial-scale=1.0">
   <title>티오더 매뉴얼</title>
 
-  <!-- Pretendard 폰트 -->
+  <!-- Pretendard Font -->
   <link href="https://cdn.jsdelivr.net/npm/pretendard@1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 
   <style>
@@ -22,13 +22,14 @@
       overflow-x: hidden;
     }
 
+    /* ===== HEADER ===== */
     .header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 30px;
-      background-color: #246ff4;
+      height: 60px;
+      background-color: #246FF4;
       display: flex;
       align-items: center;
       padding: 0 20px;
@@ -36,36 +37,51 @@
     }
 
     .header img {
-      width: 10px;
-      height: 10px;
+      width: 15px;
+      height: 15px;
       margin-right: 10px;
+      flex-shrink: 0;
     }
 
     .header-text {
-      font-size: 10px;
-      font-weight: 400;
+      font-size: 16px;
+      font-weight: 600; /* SemiBold */
       color: #ffffff;
       letter-spacing: -0.02em;
     }
 
+    /* ===== BOTTOM PANEL ===== */
+    .bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: rgba(255, 255, 255, 0.75); /* 투명도 75% */
+      z-index: 1000;
+    }
+
+    /* ===== CONTENT ===== */
     .content {
-      margin-top: 40px; /* 패널 아래 공간 확보 */
-      padding: 20px;
+      padding: 80px 20px 80px 20px; /* 헤더 + 바텀 피해서 여백 확보 */
     }
   </style>
 </head>
 <body>
 
-  <!-- 상단 고정 패널 -->
+  <!-- 헤더 -->
   <div class="header">
     <img src="symbol.png" alt="symbol">
     <div class="header-text">티오더 사장님 매뉴얼</div>
   </div>
 
-  <!-- 아래 콘텐츠 예시 -->
+  <!-- 콘텐츠 -->
   <div class="content">
-    <p class="body">여기에 본문 내용이 들어갑니다.</p>
+    <p>여기에 페이지 본문이 들어갑니다.</p>
   </div>
+
+  <!-- 바텀 (디자인만 적용, 내용은 나중에 추가 예정) -->
+  <div class="bottom"></div>
 
 </body>
 </html>
