@@ -6,25 +6,21 @@ body {
   color: #000000;
 }
 
-/* 타이틀 */
 .title {
   font-size: 32px;
   font-weight: 700;
 }
 
-/* 서브 타이틀 */
 .subtitle {
   font-size: 24px;
   font-weight: 600;
 }
 
-/* 본문 */
 .body {
   font-size: 16px;
   font-weight: 400;
 }
 
-/* 넘버링 */
 .body-number {
   font-size: 16px;
   font-weight: 400;
