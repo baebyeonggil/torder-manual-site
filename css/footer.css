@@ -18,32 +18,29 @@
 
 .footer-label {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 700; /* Bold */
   color: #000000;
+}
+
+.footer-buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .footer-btn {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400; /* Regular */
   color: #000000;
   background: none;
   border: none;
   padding: 4px 8px;
   cursor: pointer;
   border-radius: 2px;
-  transition: all 0.2s ease;
+  transition: font-weight 0.2s ease;
 }
 
 .footer-btn.active {
-  border: 2px solid #000000;
-  background-color: #000000;
-  color: #ffffff;
-  font-weight: 700;
-}
-
-/* 다크모드일 때 반전 */
-body.dark .footer-btn.active {
-  border-color: #ffffff;
-  background-color: #ffffff;
-  color: #000000;
+  font-weight: 700; /* Bold only */
 }
