@@ -1,119 +1,192 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>티오더 매뉴얼</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제품 매뉴얼 홈</title>
+  <link rel="stylesheet" href="폰트시스템.css">
   <style>
-    :root {
-      --zoom-scale: 1;
-      --bg-color: #246FF4;
-      --text-color: white;
-      --button-text-color: #246FF4;
+    body {
+      background-color: #fff;
+      color: #000;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    * {
-      box-sizing: border-box;
+    /* 상단 고정 바 */
+    #top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      border-bottom: 1px solid #ccc;
+      z-index: 1000;
+    }
+    #top-bar img {
+      height: 32px;
+      margin-right: 10px;
+    }
+    #top-bar span {
+      font-size: 20px;
+      font-weight: 400;
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: sans-serif;
-    }
-
-    .main-content {
-      width: 100%;
-      padding-top: 1.5rem;
-      padding-bottom: 6.5rem;
-      zoom: var(--zoom-scale);
-    }
-
-    .category-container {
-      padding: 0 20px;
-    }
-
-    .menu-button {
-      display: block;
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      background-color: white;
-      color: var(--button-text-color);
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      text-align: left;
-      text-decoration: none;
-      transition: background 0.2s ease, color 0.2s ease;
-    }
-
-    .menu-button:hover {
-      background-color: #e5e5e5;
-    }
-
-    .footer-fixed {
+    /* 하단 고정 바 */
+    #bottom-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      width: 100%;
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 1rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      background: #fff;
+      padding: 10px 20px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      z-index: 100;
-      zoom: 1;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      z-index: 1000;
+      border-top: 1px solid #ccc;
+    }
+    #bottom-bar button {
+      padding: 10px;
+      font-size: 16px;
+      flex-grow: 1;
     }
 
-    .footer-label {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      color: #000;
+    /* 본문 영역 */
+    .content {
+      padding-top: 80px;
+      padding-bottom: 100px;
     }
 
-    .footer-buttons {
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .button-grid {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      gap: 20px;
     }
-
-    .text-size-button {
-      background-color: white;
-      color: var(--button-text-color);
+    .button-grid button {
+      flex: 0 1 calc(50% - 10px);
+      background-color: #246FF4;
+      color: #ffffff;
       border: none;
-      padding: 0.5rem 1rem;
-      margin: 0.25rem;
-      font-weight: bold;
-      border-radius: 0.4rem;
-      cursor: pointer;
-      font-size: 1rem;
+      padding: 20px;
+      border-radius: 8px;
     }
 
-    .text-size-button:hover {
-      background-color: #e0e0e0;
+    /* 다크 모드 */
+    body.dark {
+      background-color: #333333;
+      color: #ffffff;
+    }
+    body.dark #top-bar,
+    body.dark #bottom-bar {
+      background-color: #333333;
+      color: #ffffff;
+      border-color: #555;
     }
   </style>
 </head>
 <body>
-  <div class="main-content">
-    <div class="category-container">
-      <a href="process.html" class="menu-button">티오더 프로세스</a>
-      <a href="tablet.html" class="menu-button">태블릿 기기 설정</a>
-      <button class="menu-button">티오더 기능</button>
-      <button class="menu-button">태블릿</button>
-      <button class="menu-button">POS</button>
-      <button class="menu-button">보조 장비</button>
-      <button class="menu-button">기타</button>
+  <!-- 상단 고정 바 -->
+  <div id="top-bar">
+    <img src="symbol.png" alt="symbol">
+    <span>제품 매뉴얼</span>
+  </div>
+
+  <!-- 본문 -->
+  <div class="content">
+    <!-- 각 섹션별 버튼 구성 -->
+    <div class="section">
+      <div class="subtitle">티오더 프로세스</div>
+      <div class="button-grid">
+        <button class="subtitle">유의 사항</button>
+        <button class="subtitle">시스템 구조 안내</button>
+      </div>
+    </div>
+    <div class="section">
+      <div class="subtitle">태블릿 기기 설정</div>
+      <div class="button-grid">
+        <button class="subtitle">전원 예약시간 ON/OFF</button>
+        <button class="subtitle">Wi-Fi(와이파이) 설정</button>
+      </div>
+    </div>
+    <div class="section">
+      <div class="subtitle">티오더 기능</div>
+      <div class="button-grid">
+        <button class="subtitle">오더 태블릿 사용법</button>
+        <button class="subtitle">로고/배너 이미지 변경</button>
+        <button class="subtitle">마스터 태블릿 사용법</button>
+        <button class="subtitle">선/후결제 테이블 교체</button>
+        <button class="subtitle">선결제 보류 처리</button>
+        <button class="subtitle">선결제 주문 강제 취소</button>
+        <button class="subtitle">사운드 설정</button>
+      </div>
+    </div>
+    <div class="section">
+      <div class="subtitle">티오더</div>
+      <div class="button-grid">
+        <button class="subtitle">C2 태블릿 구성</button>
+        <button class="subtitle">S2 태블릿 구성</button>
+        <button class="subtitle">태블릿 빌드 번호 확인</button>
+      </div>
+    </div>
+    <div class="section">
+      <div class="subtitle">POS</div>
+      <div class="button-grid">
+        <button class="subtitle">POS 주문 연동</button>
+      </div>
+    </div>
+    <div class="section">
+      <div class="subtitle">보조 장비</div>
+      <div class="button-grid">
+        <button class="subtitle">ipTIME 공유기 구성</button>
+        <button class="subtitle">TP-Link 공유기 구성</button>
+        <button class="subtitle">리베스트 보조 배터리 구성</button>
+      </div>
+    </div>
+    <div class="section">
+      <div class="subtitle">기타</div>
+      <div class="button-grid">
+        <button class="subtitle">상품 이미지 촬영</button>
+        <button class="subtitle">신규 상품 추가</button>
+        <button class="subtitle">신규 옵션 추가</button>
+        <button class="subtitle">직원 호출 상품 추가</button>
+        <button class="subtitle">팀뷰어 다운로드</button>
+        <button class="subtitle">서빙 로봇 구성</button>
+      </div>
     </div>
   </div>
-  <script src="common.js"></script>
+
+  <!-- 하단 고정 바 -->
+  <div id="bottom-bar">
+    <button onclick="setFontSize(1)">보통</button>
+    <button onclick="setFontSize(2)">크게</button>
+    <button onclick="setFontSize(3)">더 크게</button>
+    <button onclick="toggleMode()">대비</button>
+  </div>
+
+  <script>
+    function setFontSize(scale) {
+      document.body.style.fontSize = `${32 * scale}px`;
+      localStorage.setItem('fontSizeScale', scale);
+    }
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      localStorage.setItem('mode', isDark ? 'dark' : 'light');
+    }
+    // 초기 설정 불러오기
+    const savedScale = localStorage.getItem('fontSizeScale') || 1;
+    setFontSize(savedScale);
+    const savedMode = localStorage.getItem('mode');
+    if (savedMode === 'dark') document.body.classList.add('dark');
+  </script>
 </body>
 </html>
