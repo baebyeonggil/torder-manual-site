@@ -41,43 +41,36 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* ===== BOTTOM ===== */
-.bottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background-color: rgba(255, 255, 255, 0.75);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .bottom-inner {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 20px; /* label과 버튼 그룹 사이 간격 */
 }
-.label {
-  font-size: 18px;
-  font-weight: 700;
-}
+
 .button-group {
   display: flex;
-  gap: 10px;
+  align-items: center;
 }
+
 .bottom-btn {
   font-size: 18px;
   font-weight: 500;
   background: none;
   border: none;
-  padding: 4px 8px;
+  padding: 0 4px;
   cursor: pointer;
 }
+
 .bottom-btn.selected {
   font-weight: 700;
 }
+
+.divider {
+  margin: 0 6px;
+  color: #000;
+  font-size: 18px;
+}
+
 
 /* ===== 콘텐츠 ===== */
 .content {
