@@ -4,47 +4,46 @@
   left: 0;
   right: 0;
   min-height: 60px;
-  background-color: rgba(255, 255, 255, 0.50);
+  background-color: rgba(255, 255, 255, 0.75);
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  padding: 4px 20px;
+  justify-content: start;
+  padding: 0 20px;
+  gap: 12px;
   z-index: 1000;
   backdrop-filter: blur(8px);
   font-family: 'Pretendard', sans-serif;
-  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .footer-label {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 700; /* Bold */
   color: #000000;
-  white-space: nowrap;
-}
-
-.footer-buttons {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
 }
 
 .footer-btn {
+  font-size: 18px;
+  font-weight: 600; /* SemiBold */
+  color: #000000;
   background: none;
   border: none;
-  font-size: 16px;
-  font-weight: 400;
-  color: #000000;
+  padding: 4px 8px;
   cursor: pointer;
-  padding: 0;
-  appearance: none;
+  border-radius: 2px;
+  transition: all 0.2s ease;
 }
 
 .footer-btn.active {
-  font-weight: 700;
+  border: 2px solid #000000;
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: 700; /* Bold */
 }
 
-.divider {
-  font-size: 16px;
+/* 다크모드일 때 반전 효과 */
+body.dark .footer-btn.active {
+  border-color: #ffffff;
+  background-color: #ffffff;
   color: #000000;
 }
