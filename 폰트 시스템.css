@@ -4,7 +4,7 @@
 /* 전체 기본 설정 */
 body {
   font-family: 'Pretendard', sans-serif;
-  font-size: 32px;
+  font-size: 16px;
   font-weight: 400; /* Regular */
   line-height: 1.5;
   margin: 0;
@@ -16,31 +16,31 @@ body {
   padding-right: 20px;
 }
 
-/* 타이틀 (64px, Bold) */
+/* 타이틀 (32px, Bold) */
 .title {
-  font-size: 64px;
+  font-size: 32px;
   font-weight: 700;
   margin: 0.5em 0;
 }
 
-/* 서브 타이틀 (48px, SemiBold) */
+/* 서브 타이틀 (24px, SemiBold) */
 .subtitle {
-  font-size: 48px;
+  font-size: 24px;
   font-weight: 600;
   margin: 0.5em 0;
 }
 
-/* 본문 텍스트 (32px, Regular) */
+/* 본문 텍스트 (16px, Regular) */
 .text {
-  font-size: 32px;
+  font-size: 16px;
   font-weight: 400;
   margin: 1em 0;
 }
 
-/* 본문 넘버링 (동그라미 안에, Bold 32px) */
+/* 본문 넘버링 (동그라미 안에, Bold 16px) */
 .number-circle {
   display: inline-block;
-  font-size: 32px;
+  font-size: 16px;
   font-weight: 700;
   width: auto;
   padding: 20px;
