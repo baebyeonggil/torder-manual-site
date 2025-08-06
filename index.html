@@ -105,3 +105,25 @@
 
 </body>
 </html>
+
+<script>
+  const buttons = document.querySelectorAll('.bottom-btn');
+  const content = document.querySelector('.content');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      // selected 클래스 옮기기
+      buttons.forEach(btn => btn.classList.remove('selected'));
+      button.classList.add('selected');
+
+      // 버튼 텍스트에 따라 스케일 적용
+      const text = button.innerText.trim();
+      let scale = "1";
+      if (text === "크게") scale = "1.25";
+      else if (text === "더 크게") scale = "2";
+
+      // 데이터 속성으로 반영
+      content.setAttribute("data-scale", scale);
+    });
+  });
+</script>
