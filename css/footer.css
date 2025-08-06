@@ -8,10 +8,39 @@
   display: flex;
   align-items: center;
   padding: 0 20px;
+  font-family: 'Pretendard', sans-serif;
   z-index: 1000;
   backdrop-filter: blur(8px);
-  font-family: 'Pretendard', sans-serif;
+}
+
+.footer-label {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700; /* Bold */
   color: #000000;
+  margin-right: 12px;
+}
+
+.footer-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 400; /* Regular */
+  color: #000000;
+  cursor: pointer;
+  padding: 0;
+}
+
+.footer-btn.active {
+  font-weight: 700; /* Bold */
+}
+
+.divider {
+  color: #000000;
+  font-size: 18px;
 }
