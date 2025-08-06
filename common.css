@@ -1,0 +1,85 @@
+/* Reset & 기본 세팅 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+body {
+  font-family: 'Pretendard Variable', sans-serif;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  background-color: #f9f9f9;
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #246FF4;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+}
+.header img {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.header-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+/* ===== BOTTOM ===== */
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.75);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottom-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.label {
+  font-size: 18px;
+  font-weight: 700;
+}
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+.bottom-btn {
+  font-size: 18px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.bottom-btn.selected {
+  font-weight: 700;
+}
+
+/* ===== 콘텐츠 ===== */
+.content {
+  padding: 80px 20px 80px 20px;
+}
