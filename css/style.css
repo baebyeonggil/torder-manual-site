@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 360px;
+}
+
+main {
+  padding: 80px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menu-btn {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 16px;
+  background-color: #246FF4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #ffffff;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+}
+
+.bottom-bar button {
+  font-size: 14px;
+  padding: 8px 12px;
+  background-color: #eee;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
