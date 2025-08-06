@@ -2,7 +2,7 @@ const main = document.querySelector('main');
 const zoomButtons = document.querySelectorAll('.footer-btn[data-zoom]');
 const themeButton = document.querySelector('.footer-btn[data-theme]');
 
-// 초기 상태 불러오기
+// 초기 설정
 const savedZoom = localStorage.getItem('zoom') || '1.0';
 const savedTheme = localStorage.getItem('theme') || 'light';
 
@@ -11,7 +11,7 @@ applyTheme(savedTheme);
 highlightZoomButton(savedZoom);
 highlightThemeButton(savedTheme);
 
-// 확대 버튼 이벤트
+// 확대 버튼
 zoomButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const zoom = btn.getAttribute('data-zoom');
@@ -32,7 +32,7 @@ function highlightZoomButton(scale) {
   });
 }
 
-// 테마 전환 이벤트
+// 대비 버튼
 themeButton.addEventListener('click', () => {
   const current = localStorage.getItem('theme') || 'light';
   const next = current === 'dark' ? 'light' : 'dark';
@@ -42,7 +42,6 @@ themeButton.addEventListener('click', () => {
 });
 
 function applyTheme(theme) {
-  document.body.classList.toggle('dark', theme === 'dark');
   document.body.style.backgroundColor = theme === 'dark' ? '#333333' : '#e6e6e6';
   document.body.style.color = theme === 'dark' ? '#ffffff' : '#000000';
 }
