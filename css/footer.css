@@ -18,13 +18,13 @@
 
 .footer-label {
   font-size: 18px;
-  font-weight: 700; /* Bold */
+  font-weight: 700;
   color: #000000;
 }
 
 .footer-btn {
   font-size: 18px;
-  font-weight: 600; /* SemiBold */
+  font-weight: 600;
   color: #000000;
   background: none;
   border: none;
@@ -38,10 +38,10 @@
   border: 2px solid #000000;
   background-color: #000000;
   color: #ffffff;
-  font-weight: 700; /* Bold */
+  font-weight: 700;
 }
 
-/* 다크모드일 때 반전 효과 */
+/* 다크모드일 때 반전 */
 body.dark .footer-btn.active {
   border-color: #ffffff;
   background-color: #ffffff;
