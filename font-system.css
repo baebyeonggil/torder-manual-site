@@ -1,0 +1,42 @@
+/* font-system.css */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+body {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  color: #000000;
+}
+
+/* 타이틀 (Bold 32px) */
+.title {
+  font-size: 32px;
+  font-weight: 700; /* Bold */
+}
+
+/* 서브 타이틀 (SemiBold 24px) */
+.subtitle {
+  font-size: 24px;
+  font-weight: 600; /* SemiBold */
+}
+
+/* 본문 (Regular 16px) */
+.body {
+  font-size: 16px;
+  font-weight: 400; /* Regular */
+}
+
+/* 본문 넘버링 (16px, 원형, 중앙정렬) */
+.body-number {
+  font-size: 16px;
+  font-weight: 400;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #246FF4;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+}
