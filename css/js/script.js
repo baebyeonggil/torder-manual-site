@@ -2,7 +2,6 @@ const main = document.querySelector('main');
 const zoomButtons = document.querySelectorAll('.footer-btn[data-zoom]');
 const themeButton = document.querySelector('.footer-btn[data-theme]');
 
-// 초기 설정
 const savedZoom = localStorage.getItem('zoom') || '1.0';
 const savedTheme = localStorage.getItem('theme') || 'light';
 
@@ -11,7 +10,7 @@ applyTheme(savedTheme);
 highlightZoomButton(savedZoom);
 highlightThemeButton(savedTheme);
 
-// 확대 버튼
+// 확대 버튼 기능
 zoomButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const zoom = btn.getAttribute('data-zoom');
@@ -32,7 +31,7 @@ function highlightZoomButton(scale) {
   });
 }
 
-// 대비 버튼
+// 대비 버튼 기능
 themeButton.addEventListener('click', () => {
   const current = localStorage.getItem('theme') || 'light';
   const next = current === 'dark' ? 'light' : 'dark';
