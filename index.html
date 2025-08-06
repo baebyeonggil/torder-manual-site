@@ -18,8 +18,8 @@
       top: 0;
       left: 0;
       right: 0;
-      background: #246ff4;
-      height: 60px;
+      background: #246FF4;
+      height: 64px;
       display: flex;
       align-items: center;
       padding-left: 20px;
@@ -33,6 +33,7 @@
     #top-bar span {
       font-size: 20px;
       font-weight: 400;
+      color: #ffffff;
     }
 
     /* 하단 고정 바 */
@@ -41,19 +42,30 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: #246ff4;
+      background: rgba(0, 0, 0, 0.3);
       padding: 10px 20px;
       display: flex;
-      justify-content: space-between;
+      align-items: center;
       gap: 10px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       z-index: 1000;
       border-top: 1px solid #ccc;
+      color: #ffffff;
+    }
+    #bottom-bar .label {
+      font-size: 20px;
+      font-weight: 700;
+      margin-right: 10px;
     }
     #bottom-bar button {
-      padding: 10px;
+      background: none;
+      border: none;
+      color: #ffffff;
       font-size: 16px;
-      flex-grow: 1;
+      padding: 0;
+    }
+    #bottom-bar .divider {
+      margin: 0 5px;
     }
 
     /* 본문 영역 */
@@ -87,7 +99,7 @@
     }
     body.dark #top-bar,
     body.dark #bottom-bar {
-      background-color: #333333;
+      background-color: rgba(0, 0, 0, 0.3);
       color: #ffffff;
       border-color: #555;
     }
@@ -96,8 +108,8 @@
 <body>
   <!-- 상단 고정 바 -->
   <div id="top-bar">
-    <img src="심볼.png" alt="심볼">
-    <span>제품 매뉴얼</span>
+    <img src="symbol.png" alt="symbol">
+    <span>티오더 사장님 매뉴얼</span>
   </div>
 
   <!-- 본문 -->
@@ -166,15 +178,21 @@
 
   <!-- 하단 고정 바 -->
   <div id="bottom-bar">
+    <span class="label">글자 크기</span>
     <button onclick="setFontSize(1)">보통</button>
-    <button onclick="setFontSize(2)">크게</button>
-    <button onclick="setFontSize(3)">더 크게</button>
-    <button onclick="toggleMode()">대비</button>
+    <span class="divider">｜</span>
+    <button onclick="setFontSize(1.5)">크게</button>
+    <span class="divider">｜</span>
+    <button onclick="setFontSize(2)">더 크게</button>
+    <span class="divider">｜</span>
+    <button onclick="toggleMode()">대비◑</button>
   </div>
 
   <script>
     function setFontSize(scale) {
-      document.body.style.fontSize = `${32 * scale}px`;
+      const content = document.querySelector('.content');
+      content.style.transform = `scale(${scale})`;
+      content.style.transformOrigin = 'top center';
       localStorage.setItem('fontSizeScale', scale);
     }
     function toggleMode() {
