@@ -7,23 +7,11 @@
   background-color: rgba(255, 255, 255, 0.75);
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0 20px;
   z-index: 1000;
   backdrop-filter: blur(8px);
-}
-
-.mode-btn {
-  font-size: 18px;
-  font-weight: 500; /* Pretendard Medium */
   font-family: 'Pretendard', sans-serif;
-  background: none;
-  border: none;
+  font-size: 18px;
+  font-weight: 500;
   color: #000000;
-  cursor: pointer;
-  padding: 0;
-}
-
-.mode-btn.active {
-  font-weight: 700; /* Bold */
 }
