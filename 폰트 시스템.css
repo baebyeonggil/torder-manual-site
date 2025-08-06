@@ -1,41 +1,40 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/pretendard.css');
+@import url('https://cdn.jsdelivr.net/npm/pretendard@1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');
 
-/* 공통 텍스트 스타일 */
-* {
-  font-family: 'Pretendard', sans-serif;
+body {
+  font-family: 'Pretendard Variable', sans-serif;
   line-height: 1.4;
   letter-spacing: -0.02em;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* 타이틀 */
+/* 타이틀 (Bold, 32px) */
 .title {
   font-size: 32px;
-  font-weight: 700; /* Bold */
+  font-weight: 700;
 }
 
-/* 서브 타이틀 */
+/* 서브 타이틀 (SemiBold, 24px) */
 .subtitle {
   font-size: 24px;
-  font-weight: 600; /* SemiBold */
+  font-weight: 600;
 }
 
-/* 본문 텍스트 */
-.text {
+/* 본문 (Regular, 16px) */
+.body {
   font-size: 16px;
-  font-weight: 400; /* Regular */
+  font-weight: 400;
 }
 
-/* 넘버링 */
-.number-circle {
-  display: inline-block;
+/* 넘버링 (Bold, 16px) + 동그라미 */
+.numbering {
   font-size: 16px;
-  font-weight: 700; /* Bold */
+  font-weight: 700;
+  width: fit-content;
+  padding: 20px;
   background-color: #000000;
   color: #ffffff;
   border-radius: 50%;
-  padding: 20px;
   text-align: center;
+  display: inline-block;
 }
