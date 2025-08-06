@@ -2,21 +2,22 @@ const main = document.querySelector('main');
 const zoomButtons = document.querySelectorAll('.footer-btn[data-zoom]');
 const themeButton = document.querySelector('.footer-btn[data-theme]');
 
-// 초기 상태 적용
+// 초기 상태 불러오기
 const zoom = localStorage.getItem('zoom') || '1.0';
 const theme = localStorage.getItem('theme') || 'light';
+
 applyZoom(zoom);
 applyTheme(theme);
-updateZoomUI(zoom);
-updateThemeUI(theme);
+highlightZoomButton(zoom);
+highlightThemeButton(theme);
 
-// 확대 버튼 이벤트
+// 확대 버튼 클릭
 zoomButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const selectedZoom = btn.getAttribute('data-zoom');
     localStorage.setItem('zoom', selectedZoom);
     applyZoom(selectedZoom);
-    updateZoomUI(selectedZoom);
+    highlightZoomButton(selectedZoom);
   });
 });
 
@@ -25,26 +26,31 @@ function applyZoom(scale) {
   main.style.transformOrigin = 'top left';
 }
 
-function updateZoomUI(scale) {
+function highlightZoomButton(scale) {
   zoomButtons.forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-zoom') === scale);
   });
 }
 
-// 테마 버튼 이벤트
+// 대비 버튼 클릭
 themeButton.addEventListener('click', () => {
   const current = localStorage.getItem('theme') || 'light';
   const next = current === 'dark' ? 'light' : 'dark';
   localStorage.setItem('theme', next);
   applyTheme(next);
-  updateThemeUI(next);
+  highlightThemeButton(next);
 });
 
 function applyTheme(theme) {
-  document.body.style.backgroundColor = theme === 'dark' ? '#333333' : '#ffffff';
-  document.body.style.color = theme === 'dark' ? '#ffffff' : '#000000';
+  if (theme === 'dark') {
+    document.body.style.backgroundColor = '#333333';
+    document.body.style.color = '#ffffff';
+  } else {
+    document.body.style.backgroundColor = '#ffffff';
+    document.body.style.color = '#000000';
+  }
 }
 
-function updateThemeUI(theme) {
+function highlightThemeButton(theme) {
   themeButton.classList.toggle('active', theme === 'dark');
 }
