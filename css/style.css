@@ -11,20 +11,6 @@ body {
 }
 
 main {
-  padding: 80px 20px 80px; /* 헤더/푸터 높이만큼 여백 */
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.menu-btn {
-  font-size: 16px;
-  font-weight: bold;
-  padding: 16px;
-  background-color: #246FF4;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
