@@ -1,4 +1,3 @@
-/* header.css */
 .header {
   position: fixed;
   top: 0;
@@ -12,17 +11,14 @@
   z-index: 1000;
 }
 
-/* 심볼 */
 .header .symbol {
   width: 20px;
   height: 20px;
   margin-right: 5px;
 }
 
-/* 텍스트 */
 .header .title {
   font-size: 16px;
-  font-weight: 600; /* SemiBold */
+  font-weight: 600;
   color: #ffffff;
-  font-family: 'Pretendard', sans-serif;
 }
