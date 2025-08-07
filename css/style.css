@@ -1,0 +1,368 @@
+/* 기본 세팅 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Pretendard', sans-serif;
+  background-color: #E6E6E6;
+  overflow-x: hidden;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  
+}
+
+/* 레이아웃 */
+.container {
+  max-width: 360px;
+  margin: 0 auto;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+
+/* 폰트 시스템 */
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 24px;
+}
+
+.body-text {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 16px;
+  color: #333;
+}
+
+.body-number {
+  font-size: 16px;
+  width: 25px;
+  height: 25px;
+  font-weight: 700;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+
+
+
+@media (max-width: 280px) {
+  .title { font-size: 32px; }
+  .subtitle { font-size: 24px; }
+  .body-text { font-size: 16px; }
+  .body-number {
+    font-size: 16px;
+    width: 25px;
+    height: 25px;
+  }
+}
+
+
+@media (min-width: 480px) {
+  .title { font-size: 48px; }
+  .subtitle { font-size: 36px; }
+  .body-text { font-size: 24px; }
+  .body-number {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+
+
+
+.app-banner-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.app-banner-bg {
+  width: 100%;
+  display: block;
+}
+
+.download-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.download-btn img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #246FF4;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #246FF4;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px; /* 아이콘과 텍스트 사이 간격 */
+}
+
+.header-symbol {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.footer-accessibility {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  padding: 0 20px;
+  background-color: rgba(255, 255, 255, 100);
+  z-index: 100;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  gap: 10px;
+  border-top: 1px solid #000;
+  text-align: center;
+  flex-wrap: wrap; 
+}
+
+
+
+
+.footer-accessibility input[type="radio"],
+.footer-accessibility input[type="checkbox"] {
+  display: none;
+}
+
+.footer-accessibility label {
+  cursor: pointer;
+  font-weight: 500;
+  color: #000;
+}
+
+.footer-accessibility .footer-label {
+  font-weight: 700;
+}
+
+.footer-accessibility {
+  background-color: white !important;
+  color: black !important;
+}
+
+
+
+
+
+/* 선택된 라디오 스타일 */
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
+  font-weight: 700;
+  background-color: #000;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+:root {
+  --content-scale: 1;
+}
+
+.body-text {
+  font-size: calc(32px * var(--content-scale));
+}
+.subtitle {
+  font-size: calc(48px * var(--content-scale));
+}
+.title {
+  font-size: calc(64px * var(--content-scale));
+}
+
+
+
+
+body.high-contrast .container {
+  background-color: #000;
+  color: #fff;
+}
+
+/* 본문 글자색 */
+body.high-contrast .container .body-text,
+body.high-contrast .container .title,
+body.high-contrast .container .subtitle,
+body.high-contrast .container .body-number {
+  color: #fff;
+}
+
+/* 넘버링 반전 */
+body.high-contrast .container .body-number {
+  background-color: #fff;
+  color: #000;
+}
+
+/* 라디오 버튼 라벨 */
+body.high-contrast .container input[type="radio"]:checked + label,
+body.high-contrast .container input[type="checkbox"]:checked + label {
+  background-color: #fff;
+  color: #000000;
+}
+
+
+
+
+.tool {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.tool-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tool-button {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
+  font-weight: 700;
+  background: #000;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+label {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.tool-button {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* 선택된 상태 스타일 */
+.tool-button input:checked + span,
+.tool-button input:checked {
+  background-color: #000;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+
+
+
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .container {
+  background-color: #333;
+  color: #fff;
+}
+
+
+.dark-mode .body-text,
+.dark-mode .subtitle,
+.dark-mode .title {
+  color: #fff;
+}
+
+.dark-mode input[type="radio"]:checked + label,
+.dark-mode input[type="checkbox"]:checked + label {
+  background: #fff;
+  color: #000;
+}
+
+.dark-mode .footer-accessibility {
+  background-color: rgba(255, 255, 255, 100);
+}
+
+.dark-mode .header {
+  background-color: #000;
+}
+
+
+
+.chapter-box {
+  width: calc(360px * var(--content-scale));
+  height: calc(200px * var(--content-scale));
+  margin: 20px auto;
+  border-radius: calc(0px * var(--content-scale));
+}
