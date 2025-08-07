@@ -361,8 +361,10 @@ label {
 
 
 .chapter-box {
-  width: calc(360px * var(--content-scale));
+  width: 100%;
+  max-width: calc(360px * var(--content-scale));
   height: calc(200px * var(--content-scale));
   margin: 20px auto;
-  border-radius: calc(0px * var(--content-scale));
+  border-radius: 0;
 }
+
