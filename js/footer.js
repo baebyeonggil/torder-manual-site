@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <strong class="footer-label">글자크기</strong>
 
           <label class="tool-button">
-            <input type="radio" name="scale" value="1" checked>
+            <input type="radio" name="scale" value="1">
             보통
           </label>
 
@@ -31,31 +31,42 @@ document.addEventListener("DOMContentLoaded", () => {
     </footer>
   `;
 
+  // 푸터 삽입
   document.body.insertAdjacentHTML("beforeend", footerHTML);
 
- 
-  const radios = document.querySelectorAll('input[name="scale"]');
+  /* =====================
+     글자 크기 스케일 기능
+     ===================== */
   const root = document.documentElement;
+  const radios = document.querySelectorAll('input[name="scale"]');
+
+  // 저장된 값 불러오기 (기본값: 1)
   const savedScale = localStorage.getItem('scale') || '1';
   root.style.setProperty('--content-scale', savedScale);
+
+  // 라디오 체크 상태 반영
   radios.forEach(radio => {
-    if (radio.value === savedScale) radio.checked = true;
+    radio.checked = (radio.value === savedScale);
     radio.addEventListener('change', () => {
       root.style.setProperty('--content-scale', radio.value);
       localStorage.setItem('scale', radio.value);
     });
   });
 
-
+  /* =====================
+     다크모드 토글 기능
+     ===================== */
   const themeCheckbox = document.getElementById('theme');
   const savedTheme = localStorage.getItem('theme') || 'light';
-  if (savedTheme === 'dark') {
-    themeCheckbox.checked = true;
-    document.body.classList.add('dark-mode');
-  }
 
+  // 저장된 테마 적용
+  document.body.classList.toggle('dark-mode', savedTheme === 'dark');
+  themeCheckbox.checked = (savedTheme === 'dark');
+
+  // 변경 시 저장
   themeCheckbox.addEventListener("change", () => {
-    document.body.classList.toggle('dark-mode', themeCheckbox.checked);
-    localStorage.setItem('theme', themeCheckbox.checked ? 'dark' : 'light');
+    const isDark = themeCheckbox.checked;
+    document.body.classList.toggle('dark-mode', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
 });
