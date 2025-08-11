@@ -501,3 +501,20 @@ body.dark-mode .header-home-link:visited {
   color:#000 !important;
   border-color:#000 !important;
 }
+
+
+/* 본문의 모든 SVG 이미지(<img src="*.svg">)에 적용 */
+img[src$=".svg"] {
+  display: block;        /* 인라인이면 margin-bottom 안 먹음 → 블록으로 */
+  margin-bottom: 80px;
+}
+
+/* 헤더/푸터는 제외 */
+header img[src$=".svg"],
+header svg,
+footer img[src$=".svg"],
+footer svg,
+.header img[src$=".svg"],
+.footer-accessibility svg {
+  margin-bottom: 0 !important;
+}
