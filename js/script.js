@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 글자 크기 조절
+
   const radios = document.querySelectorAll('input[name="scale"]');
   const root = document.documentElement;
   const savedScale = localStorage.getItem('fontScale') || '1';
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 다크모드 전환
+
   const themeToggle = document.getElementById('theme');
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {

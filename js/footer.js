@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.body.insertAdjacentHTML("beforeend", footerHTML);
 
-  // ✅ 폰트 크기 조절 기능
+ 
   const radios = document.querySelectorAll('input[name="scale"]');
   const root = document.documentElement;
   const savedScale = localStorage.getItem('scale') || '1';
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ✅ 대비 모드 기능
+
   const themeCheckbox = document.getElementById('theme');
   const savedTheme = localStorage.getItem('theme') || 'light';
   if (savedTheme === 'dark') {
