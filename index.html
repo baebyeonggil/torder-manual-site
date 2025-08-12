@@ -1,28 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>홈</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/pretendard.css">
-  <link rel="stylesheet" href="css/style.css" />
-</head>
 
+  <!-- BOOT: 저장값 복원 (CSS보다 위!) -->
+  <script>
+  (function () {
+    try {
+      const s = localStorage.getItem('scale') || '1';
+      const t = localStorage.getItem('theme') || 'light';
+      document.documentElement.style.setProperty('--content-scale', s);
+      document.documentElement.classList.toggle('dark-mode', t === 'dark');
+    } catch(e){}
+  })();
+  </script>
+
+  <!-- 폰트 / CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/pretendard.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 <body class="home">
 
+  <!-- 헤더 -->
+  <header class="header">
+    <img src="img/logo.svg" alt="" class="header-symbol" />
+    <h1 class="header-title">가이드</h1>
+    <a class="header-home-link" href="index.html">처음으로</a>
+  </header>
+
+  <!-- 앱 배너 -->
   <div class="app-banner-wrapper">
     <img src="img/ceo-app.svg" alt="앱 배너 이미지" class="app-banner-bg">
     <button class="download-btn" onclick="window.open('https://ceo-app.torder.com/fallback', '_blank')">
       <img src="img/download-button.svg" alt="다운로드 버튼 아이콘">
     </button>
   </div>
-
-
-
-  
-
-  
-
 
   <!-- 티오더 프로세스 -->
   <div class="chapter-head" style="background-color: #ff3c5c;">
@@ -97,18 +111,9 @@
     <a href="07-etc/serving-robot-setup.html"><span>서빙 로봇 구성</span><img src="img/arrow.svg" alt=""></a>
   </div>
 
-</div>
+  <!-- 푸터 및 헤더 삽입 -->
+  <script src="js/footer.js" defer></script>
+  <script src="/js/header.js" defer></script>
 
-  <script src="js/header.js"></script>
-  <script src="js/footer.js"></script>
-  <script src="js/script.js"></script>
 </body>
 </html>
-
-<!-- index.html -->
-<link rel="stylesheet" href="css/style.css?v=1">
-
-
-<!-- 01-process/notice.html -->
-<link rel="stylesheet" href="../css/style.css">
-

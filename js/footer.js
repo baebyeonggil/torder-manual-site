@@ -1,77 +1,89 @@
-// footer.js
-document.addEventListener("DOMContentLoaded", () => {
-  injectFooter();
-  applyScaleFromStorage();   // 1) 최초 적용
-  wireScaleRadios();         // 2) 이벤트 바인딩
-  applyThemeFromStorage();   // 3) 테마 적용
-});
+// ==== 푸터 HTML ====
+const footerHTML = `
+<footer class="footer-accessibility">
+  <div class="tool-group">
+    <strong>글자크기</strong>
+    <span class="tool-button">
+      <input type="radio" id="scale-medium" name="scale" value="1" checked>
+      <label for="scale-medium">보통</label>
+    </span>
+    <span class="tool-button">
+      <input type="radio" id="scale-large" name="scale" value="1.25">
+      <label for="scale-large">크게</label>
+    </span>
+    <span class="tool-button">
+      <input type="radio" id="scale-huge" name="scale" value="1.5">
+      <label for="scale-huge">더 크게</label>
+    </span>
+  </div>
+  <div class="tool-group">
+    <span class="tool-button">
+      <input type="checkbox" id="theme">
+      <label for="theme">대비</label>
+    </span>
+  </div>
+</footer>
+`;
 
-// 뒤로가기/앞으로가기/같은 페이지 재진입 시 (bfcache 복원 포함)
-window.addEventListener("pageshow", (event) => {
-  // bfcache 복원 시에도 강제 재적용
-  applyScaleFromStorage();
-  applyThemeFromStorage();
-});
-
-
-// ===== 구현부 =====
-const STORAGE_KEY_SCALE = "scale";
-const STORAGE_KEY_THEME = "theme";
-
-function injectFooter() {
-  const footerHTML = `
-    <footer class="footer-accessibility">
-      <div class="tool">
-        <div class="tool-group">
-          <strong class="footer-label">글자크기</strong>
-          <label class="tool-button"><input type="radio" name="scale" value="1">보통</label>
-          <label class="tool-button"><input type="radio" name="scale" value="1.25">크게</label>
-          <label class="tool-button"><input type="radio" name="scale" value="1.5">더 크게</label>
-        </div>
-        <div class="tool-group">
-          <label class="tool-button"><input type="checkbox" id="theme">대비</label>
-        </div>
-      </div>
-    </footer>
-  `;
-  // 이미 있으면 중복 삽입 방지
-  if (!document.querySelector(".footer-accessibility")) {
-    document.body.insertAdjacentHTML("beforeend", footerHTML);
-  }
-}
-
-
-function applyScaleFromStorage() {
-  const root = document.documentElement;
-  const saved = localStorage.getItem(STORAGE_KEY_SCALE) || "1";
-  root.style.setProperty("--content-scale", saved);
-
-  // 라디오 UI 동기화
-  document.querySelectorAll('input[name="scale"]').forEach(r => {
-    r.checked = (r.value === saved);
-  });
-}
-
-function wireScaleRadios() {
-  document.querySelectorAll('input[name="scale"]').forEach(r => {
-    r.addEventListener("change", () => {
-      const v = r.value;
-      document.documentElement.style.setProperty("--content-scale", v);
-      localStorage.setItem(STORAGE_KEY_SCALE, v);
+// ==== 기능 ====
+function initFooter() {
+  // 스케일
+  document.querySelectorAll('input[name="scale"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      const v = e.target.value;
+      document.documentElement.style.setProperty('--content-scale', v);
+      localStorage.setItem('scale', v);
     });
   });
-}
 
-function applyThemeFromStorage() {
-  const savedTheme = localStorage.getItem(STORAGE_KEY_THEME) || "light";
-  const toggle = document.getElementById("theme");
-  document.body.classList.toggle("dark-mode", savedTheme === "dark");
-  if (toggle) {
-    toggle.checked = (savedTheme === "dark");
-    toggle.addEventListener("change", () => {
-      const isDark = toggle.checked;
-      document.body.classList.toggle("dark-mode", isDark);
-      localStorage.setItem(STORAGE_KEY_THEME, isDark ? "dark" : "light");
+  // 다크모드
+  const themeEl = document.getElementById('theme');
+  if (themeEl) {
+    themeEl.addEventListener('change', (e) => {
+      const on = e.target.checked;
+      document.documentElement.classList.toggle('dark-mode', on);
+      localStorage.setItem('theme', on ? 'dark' : 'light');
     });
   }
+
+  // 복원(시각 동기화)
+  const s = localStorage.getItem('scale') || '1';
+  const sel = document.querySelector(`input[name="scale"][value="${s}"]`);
+  if (sel) sel.checked = true;
+
+  const t = localStorage.getItem('theme') || 'light';
+  document.documentElement.classList.toggle('dark-mode', t === 'dark');
+  if (themeEl) themeEl.checked = (t === 'dark');
+}
+
+// === 페이지 하단 고지 문구 ===
+const legalHTML = `
+<div class="site-legal">
+  본 자료는 (주)티오더의 내부 자료로, 사전 승인을 받지 않은 외부 공유는 제한됩니다.
+  본 자료의 무단 공개 또는 외부 유출 시, 관련 법률에 따라 조치가 이루어질 수 있음을 안내드립니다.
+</div>`;
+
+
+// ==== 안전 마운트: 이미 있으면 재사용, 아니면 생성 ====
+function mountFooter() {
+  // 1) 푸터 없으면 생성
+  let footerEl = document.querySelector('.footer-accessibility');
+  if (!footerEl) {
+    document.body.insertAdjacentHTML('beforeend', footerHTML);
+    footerEl = document.querySelector('.footer-accessibility');
+  }
+
+  // 2) 고지 문구가 없으면 푸터 '바로 위'에 삽입
+  if (!document.querySelector('.site-legal') && footerEl) {
+    footerEl.insertAdjacentHTML('beforebegin', legalHTML);
+  }
+
+  // 3) 기능 장착
+  initFooter();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', mountFooter);
+} else {
+  mountFooter();
 }
