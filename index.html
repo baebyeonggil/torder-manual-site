@@ -23,12 +23,7 @@
 </head>
 <body class="home">
 
-  <!-- 헤더 -->
-  <header class="header">
-    <img src="img/logo.svg" alt="" class="header-symbol" />
-    <h1 class="header-title">가이드</h1>
-    <a class="header-home-link" href="index.html">처음으로</a>
-  </header>
+  <!-- 헤더는 js/header.js가 주입 (HTML에 따로 안 넣음) -->
 
   <!-- 앱 배너 -->
   <div class="app-banner-wrapper">
@@ -111,9 +106,8 @@
     <a href="07-etc/serving-robot-setup.html"><span>서빙 로봇 구성</span><img src="img/arrow.svg" alt=""></a>
   </div>
 
-  <!-- 푸터 및 헤더 삽입 -->
+  <!-- 스크립트 (상대경로, defer) -->
+  <script src="js/header.js" defer></script>
   <script src="js/footer.js" defer></script>
-  <script src="/js/header.js" defer></script>
-
 </body>
 </html>
