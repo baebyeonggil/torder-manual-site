@@ -1,0 +1,272 @@
+/* ========== Reset ========== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Pretendard', sans-serif;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  margin-top: 30px; /* 고정 헤더 여백 */
+  margin-bottom: 30px; /* 고정 푸터 여백 */
+}
+
+/* ========== Vars & Scale ========== */
+:root { --content-scale: 1; --footer-h: 60px; }
+
+/* 중앙 영역만 글자 스케일 적용 (홈/하위 공통) */
+main, .container, .content, .page, .home {
+  font-size: calc(1em * var(--content-scale));
+}
+
+/* ========== Layout ========== */
+.container { padding: 20px 20px 0; margin: 0 auto; min-height: 100vh; }
+.container :is(img, svg) {
+  display: block; margin: 20px -20px 80px;
+  width: calc(100% + 40px); height: auto;
+}
+
+/* ========== Font System (Pretendard) ========== */
+:root{
+  --font-sans: 'Pretendard', 'Noto Sans KR', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+
+  --fs-title: 32px;   --fw-title: 700; /* Bold */
+  --fs-sub:   24px;   --fw-sub:   600; /* SemiBold */
+  --fs-body:  16px;   --fw-body:  500; /* Medium */
+
+  --lh-title: 1.25;
+  --lh-sub:   1.35;
+  --lh-body:  1.6;
+}
+
+/* 본문 기본(스케일 반영) — 기존 규칙이 있으면 그대로 두고, 없으면 사용 */
+:is(main, .container, .content, .page, .home){
+  font-family: var(--font-sans);
+}
+
+/* 타입스타일 (네가 쓰는 클래스 이름 그대로 매핑) */
+.text-title, .title{
+  font-family: var(--font-sans);
+  font-size: calc(var(--fs-title) * var(--content-scale));
+  font-weight: var(--fw-title);
+  line-height: var(--lh-title);
+  letter-spacing: -0.01em;
+  margin-bottom: calc(20px * var(--content-scale));
+}
+
+.text-subtitle, .subtitle{
+  font-family: var(--font-sans);
+  font-size: calc(var(--fs-sub) * var(--content-scale));
+  font-weight: var(--fw-sub);
+  line-height: var(--lh-sub);
+  letter-spacing: -0.005em;
+  margin-bottom: calc(10px * var(--content-scale));
+}
+
+.text-body, .body-text{
+  font-family: var(--font-sans);
+  font-size: calc(var(--fs-body) * var(--content-scale));
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  margin-bottom: calc(10px * var(--content-scale));
+}
+
+
+
+/* ========== App banner ========== */
+.app-banner-wrapper { position: relative; width: 100%; margin-bottom: 80px; }
+.app-banner-bg { width: 100%; display: block; }
+.download-btn {
+  position: absolute; bottom: 20px; left: 20px; width: 80px; height: 80px;
+  padding: 0; border: none; background: transparent; cursor: pointer; z-index: 10;
+}
+.download-btn img { width: 100%; height: auto; display: block; }
+
+/* ========== Header ========== */
+.header{
+  position: fixed; top: 0; left: 0; width: 100%; height: 60px;
+  background-color:#246FF4; z-index:100;
+  display:flex; align-items:center; justify-content:space-between; padding:0 16px; gap:8px;
+}
+.header-symbol { width:30px; height:30px; display:block; }
+.header-title  { font-size:20px; font-weight:600; color:#fff; margin:0; }
+
+/* 처음으로 버튼 */
+.header-home-link,
+.header-home-link:link,
+.header-home-link:visited{
+  background:#fff; color:#246ff4;
+  text-decoration:none; font-weight:bold; display:inline-block; padding:6px 12px; border-radius:6px;
+}
+
+/* ========== Footer (항상 라이트) ========== */
+.footer-accessibility {
+  position: fixed; bottom: 0; left: 0;
+  width: 100%; height: 60px;
+  display: flex; justify-content: center; align-items: center;
+  background-color: #fff; color:#000; border-top: 1px solid #000;
+  font-size: 16px; padding: 5px 6px; z-index: 100;
+  gap: 8px;
+}
+.footer-accessibility .tool-group { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.footer-accessibility .tool-button { display: flex; align-items: center; }
+.footer-accessibility input[type="radio"], .footer-accessibility input[type="checkbox"] { display: none; }
+.footer-accessibility label {
+  cursor: pointer; 
+  padding: 4px 8px; 
+  border-radius: 4px; 
+  font-weight: 500; 
+  color: #000; 
+  transition: .2s;
+}
+.footer-accessibility label{ font-size: 18px !important; }
+
+/* 다크모드일 때 푸터 색 반전 */
+html.dark-mode .footer-accessibility,
+body.dark-mode .footer-accessibility {
+  background:#111 !important;
+  color:#fff !important;
+  border-top:1px solid #444 !important;
+}
+
+/* 라벨은 기존에 #000로 고정돼 있으니 덮어쓰기 */
+html.dark-mode .footer-accessibility label,
+html.dark-mode .footer-accessibility strong { 
+  color:#fff !important;
+}
+
+/* 선택된 pill도 반전(라이트에선 검정 pill → 다크에선 흰 pill) */
+html.dark-mode .footer-accessibility input:checked + label{
+  background:#fff !important;
+  color:#000 !important;
+}
+
+/* 포커스 아웃라인도 밝게 */
+html.dark-mode .footer-accessibility input:focus + label{
+  outline-color:#fff !important;
+}
+
+/* (경계선 쓰면) 그룹 구분선 색 어둡게 */
+html.dark-mode .footer-accessibility .tool-group + .tool-group{
+  border-left-color:#444 !important;
+}
+
+
+/* 선택 pill */
+.footer-accessibility input:checked + label {
+  background-color: #000; color: #fff; font-weight: 700;
+}
+/* 포커스 표시 깔끔하게 */
+.footer-accessibility input:focus, .footer-accessibility label:focus { outline: none; box-shadow: none; }
+.footer-accessibility input:focus + label { outline: 2px solid #000; outline-offset: 2px; }
+
+/* ========== Chapter list (홈) ========== */
+.chapter-head{
+  display:flex; align-items:center; height: calc(160px * var(--content-scale));
+  padding-left:20px; 
+  color:#000; 
+  font-weight:700; 
+  font-size: calc(24px * var(--content-scale)); 
+  margin-top:60px;
+}
+.chapter-links a{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:40px; text-decoration:none; 
+  color:#000; 
+  font-size: calc(24px * var(--content-scale)); 
+  font-weight:600; 
+  position:relative;
+}
+
+.chapter-links a { position: relative; }
+.chapter-links a::after{
+  content:"";
+  position:absolute;
+  left:20px; right:20px; bottom:0;
+  height:1px; background:#b1b1b1;
+}
+
+/* ========== Dark Mode ========== */
+/* 헤더: 다크모드에서 검정 */
+html.dark-mode .header,
+body.dark-mode .header { background:#000 !important; color:#fff !important; }
+html.dark-mode .header a,
+body.dark-mode .header a { color:#fff; }
+
+/* '처음으로' 버튼은 다크에서도 검정 글자/검정 보더 유지 */
+html.dark-mode .header .header-home-link,
+html.dark-mode .header .header-home-link:link,
+html.dark-mode .header .header-home-link:visited{
+  color:#000 !important; background:#fff; border-color:#000;
+}
+
+/* 일반 페이지(컨테이너형) 중앙 영역 반전 */
+html.dark-mode :is(main, .container, .content, .page, .section),
+body.dark-mode :is(main, .container, .content, .page, .section) {
+  background:#333333 !important; color:#ffffff !important;
+}
+
+/* 홈 페이지 전체 반전 + 링크 글자 흰색 */
+html.dark-mode body.home,
+body.dark-mode.home { background:#333 !important; color:#fff !important; }
+html.dark-mode body.home .chapter-links a,
+html.dark-mode body.home .chapter-links a span,
+body.dark-mode.home .chapter-links a,
+body.dark-mode.home .chapter-links a span { color:#fff !important; }
+
+/* 홈: 색상 프레임 제목(Chapter head)은 검정 유지 */
+html.dark-mode body.home .chapter-head,
+body.dark-mode.home .chapter-head { color:#000 !important; }
+
+/* 홈: 구분선(::before) 흰색 */
+.chapter-links a { position: relative; } /* ::before 기준점 */
+html.dark-mode body.home .chapter-links a + a::before,
+body.dark-mode.home .chapter-links a + a::before { background:#fff !important; }
+
+/* 홈: 외부 SVG(arrow.svg) 반전 */
+html.dark-mode body.home .chapter-links img[src$="arrow.svg"],
+body.dark-mode.home .chapter-links img[src$="arrow.svg"] { filter: invert(1) brightness(2); }
+
+/* (선택) 홈 링크 hover */
+body.dark-mode.home .chapter-links a:hover { background-color: rgba(255,255,255,0.1); }
+
+/* === Footer button sizing (원하면 숫자만 바꿔) === */
+.footer-accessibility {
+  --btn-fs: 14px; --btn-py: 6px; --btn-px: 10px; --group-gap: 10px; --tool-gap: 6px;
+  gap: var(--group-gap);
+}
+.footer-accessibility .tool-group { gap: var(--tool-gap); }
+.footer-accessibility label { font-size: var(--btn-fs); padding: var(--btn-py) var(--btn-px); line-height: 1; display: inline-flex; align-items: center; }
+
+
+/* 다크모드일 때 페이지 배경도 어둡게 (마지막 빈 공간까지 검정) */
+html.dark-mode,
+html.dark-mode body {
+  background:#333 !important;
+}
+
+/* 2) 푸터의 윗선 약하게 하거나 제거 (진한 선 방지) */
+html.dark-mode .footer-accessibility {
+  border-top: none;
+}
+
+/* 페이지 맨 아래 고지 문구 (기본) */
+.site-legal{
+  box-sizing: border-box;
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  margin: 24px auto 20px;
+  padding: 0 20px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000;
+  text-align: left;
+   word-break: keep-all;
+}
+
+/* 다크모드 텍스트 색 */
+html.dark-mode .site-legal,
+body.dark-mode .site-legal{
+  color: #bbb !important;
+}
+
