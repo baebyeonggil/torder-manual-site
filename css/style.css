@@ -255,10 +255,10 @@ html.dark-mode .footer-accessibility {
   font-size: 12px;
   line-height: 1.5;
   color: #000000;
-  text-align: left;
+  text-align: center;
   max-width: 1200px;
   padding: 0 30px;
-  margin: auto 0;   /* 위쪽만 살짝 띄움 */
+  margin: auto 0;
   word-break: keep-all;
 }
 /* 다크모드 색 */
@@ -268,5 +268,6 @@ body.dark-mode .site-legal{ color:#bbb; }
 /* 고정 푸터에 안 가리도록 body 하단 여백(없으면 추가) */
 :root { --footer-h: 10px; }
 html, body { padding-bottom: var(--footer-h); } /* margin-bottom 말고 padding-bottom! */
+
 
 
