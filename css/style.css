@@ -35,13 +35,13 @@ main, .container, .content, .page, .home {
 
 .container :is(img, svg) {
   display: block; 
-  margin: 20px -20px 80px;
+  margin: 20px -20px 10px;
   width: calc(100% + 40px); 
   height: auto;
 }
 
 .container .info{
-  margin-top:-60px;
+  margin-top: 5px;
   display:flex;
   align-items:flex-start;
   gap:5px;
@@ -50,7 +50,7 @@ main, .container, .content, .page, .home {
 
 
 
-/* ========== Font System (Pretendard) ========== */
+/* ========== Font System ========== */
 :root{
   --font-sans: 'Pretendard';
 
@@ -68,7 +68,6 @@ main, .container, .content, .page, .home {
   font-family: var(--font-sans);
 }
 
-/* 타입스타일 */
 .text-title, .title{
   font-family: var(--font-sans);
   font-size: calc(var(--fs-title) * var(--content-scale));
@@ -84,7 +83,7 @@ main, .container, .content, .page, .home {
   font-weight: var(--fw-sub);
   line-height: var(--lh-sub);
   letter-spacing: -0.005em;
-  margin-bottom: calc(10px * var(--content-scale));
+  margin-bottom: calc(20px * var(--content-scale));
 }
 
 .text-body, .body-text{
@@ -95,15 +94,66 @@ main, .container, .content, .page, .home {
   margin-bottom: calc(5px * var(--content-scale));
 }
 
-/* 넘버링 + 문구 컨테이너 */
+.caption {
+  font-family: var(--font-sans);
+  font-size: calc(12px * var(--content-scale));
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.numbered-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.numbered-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.number-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #333;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 28px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+
+.caption {
+  color: #555;
+  margin-top: 2px;
+}
+
+
+/* 캡션 다크 모드 */
+html.dark-mode .caption {
+  color: #ffffff;
+}
+
+/* 넘버링 문구 컨테이너 */
 .numbered-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
   position: relative;
-  /* 숫자 직경(28px) + 간격(8px) → 모두 스케일 적용 */
   padding-left: calc((28px + 8px) * var(--content-scale));
   font-family: var(--font-sans);
   font-size: calc(var(--fs-body) * var(--content-scale));
+  font-weight: var(--fw-body);
   line-height: var(--lh-body);
 }
+
 
 /* 넘버링 */
 .number-label {
@@ -128,9 +178,54 @@ html.dark-mode .number-label {
   color: #000;
 }
 
+.info {
+  font-family: 'Pretendard', sans-serif;
+  font-size: calc(16px * var(--content-scale));
+  font-weight: 500;
+  line-height: 1.5;
+}
 
+.info-label {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: calc(16px * var(--content-scale));
+  padding: 4px 14px;
+  background-color: #246ff4;
+  color: #fff;
+  border-radius: 50px;
+  margin-right: 5px;
+  vertical-align: center;
+}
 
+/* 불릿박스 */
+.bullet-box {
+  font-family: var(--font-sans);
+  font-size: calc(var(--fs-body) * var(--content-scale));
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  background-color: #f2f2f2; 
+  border-radius: 6px; 
+  padding: 12px 16px; 
+  margin-top: 10px;
+  margin-bottom: 0px; 
+}
 
+/* ul 기본 점 스타일 유지 */
+.bullet-box ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.bullet-box li {
+  margin-bottom: 6px;
+}
+
+/* 다크 모드 반전 */
+html.dark-mode .bullet-box {
+  background-color: #424242; 
+  color: #ffffff;
+}
 
 
 /* ========== App banner ========== */
@@ -181,7 +276,7 @@ html.dark-mode .number-label {
 }
 .footer-accessibility label{ font-size: 18px !important; }
 
-/* 다크모드일 때 푸터 색 반전 */
+/* 다크모드 푸터 색*/
 html.dark-mode .footer-accessibility,
 body.dark-mode .footer-accessibility {
   background:#111 !important;
@@ -279,7 +374,9 @@ html.dark-mode body.home .chapter-head,
 body.dark-mode.home .chapter-head { color:#000 !important; }
 
 /* 홈: 구분선(::before) 흰색 */
-.chapter-links a { position: relative; } /* ::before 기준점 */
+.chapter-links a { position: relative; } 
+
+/* ::before 기준점 */
 html.dark-mode body.home .chapter-links a + a::before,
 body.dark-mode.home .chapter-links a + a::before { background:#fff !important; }
 
@@ -305,7 +402,7 @@ html.dark-mode body {
   background:#333 !important;
 }
 
-/* 2) 푸터의 윗선 약하게 하거나 제거 (진한 선 방지) */
+/* 푸터의 윗선 약하게 하거나 제거 */
 html.dark-mode .footer-accessibility {
   border-top: none;
 }
@@ -338,21 +435,6 @@ html.dark-mode .info-label {
   color: #333;
 }
 
-.info {
-  font-family: 'Pretendard', sans-serif;
-  font-size: calc(14px * var(--content-scale));
-  line-height: 1.5;
-}
-
-.info-label {
-  display: inline-block;
-  white-space: nowrap;
-  font-weight: 700;
-  font-size: calc(16px * var(--content-scale));
-  padding: 4px 14px;
-  background-color: #246ff4;
-  color: #fff;
-  border-radius: 50px;
-  margin-right: 5px;
-  vertical-align: center;
+.group {
+  margin-bottom: 80px;
 }
