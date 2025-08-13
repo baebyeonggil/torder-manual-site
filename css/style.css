@@ -2,13 +2,13 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
   width: 100%;
-  min-height: 100%;
   font-family: 'Pretendard', sans-serif;
   background-color: #ffffff;
   overflow-x: hidden;
-  margin-top: 30px; /* 고정 헤더 여백 */
-  margin-bottom: 30px; /* 고정 푸터 여백 */
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
+
 
 /* ========== Vars & Scale ========== */
 :root { --content-scale: 1; --footer-h: 60px; }
@@ -19,19 +19,25 @@ main, .container, .content, .page, .home {
 }
 
 /* ========== Layout ========== */
-.container { padding: 20px 20px 0; margin: 0 auto; min-height: 100vh; }
-.container :is(img, svg) {
-  display: block; margin: 20px -20px 80px;
-  width: calc(100% + 40px); height: auto;
+:root {
+  --header-h: 60px;
+  --footer-h: 60px;
 }
 
-.container .info :is(img.icon, svg.icon) {
-  width:28px;
-  height:28px;
-  margin:0 5px 0 0;
-  display:inline-block;
-  line-height:1.5;
-  font-size:var(--body-size,16px);
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  flex: 1;
+  min-height: auto;
+}
+
+.container :is(img, svg) {
+  display: block; 
+  margin: 20px -20px 80px;
+  width: calc(100% + 40px); 
+  height: auto;
 }
 
 .container .info{
@@ -41,6 +47,8 @@ main, .container, .content, .page, .home {
   gap:5px;
   line-height:1.5;
 }
+
+
 
 /* ========== Font System (Pretendard) ========== */
 :root{
@@ -86,6 +94,42 @@ main, .container, .content, .page, .home {
   line-height: var(--lh-body);
   margin-bottom: calc(5px * var(--content-scale));
 }
+
+/* 넘버링 + 문구 컨테이너 */
+.numbered-text {
+  position: relative;
+  /* 숫자 직경(28px) + 간격(8px) → 모두 스케일 적용 */
+  padding-left: calc((28px + 8px) * var(--content-scale));
+  font-family: var(--font-sans);
+  font-size: calc(var(--fs-body) * var(--content-scale));
+  line-height: var(--lh-body);
+}
+
+/* 넘버링 */
+.number-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(28px * var(--content-scale));
+  height: calc(28px * var(--content-scale));
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  font-size: calc(var(--fs-body) * var(--content-scale));
+  font-weight: var(--fw-title);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 다크 모드 반전 */
+html.dark-mode .number-label {
+  background-color: #fff;
+  color: #000;
+}
+
+
+
 
 
 
@@ -268,21 +312,19 @@ html.dark-mode .footer-accessibility {
 
 :root { --side-gap: 20px; }
 
-:root { --side-gap: 20px; }
 
-/* 모바일 포함: 항상 좌우 20px (iOS 노치 있으면 더 벌림) */
+
+/* 고지 문구 */
 .site-legal{
   box-sizing: border-box;
   width: auto;
   margin: 24px
           max(var(--side-gap), env(safe-area-inset-right))
-          20px
           max(var(--side-gap), env(safe-area-inset-left));
-  padding: 0;
+  margin-top: auto;
   text-align: left;
   font-size: 12px;
   line-height: 1.5;
-  line-break: strict;
 }
 
 /* 데스크톱 스크롤바로 인한 좌우 비대칭 방지 */
@@ -314,4 +356,3 @@ html.dark-mode .info-label {
   margin-right: 5px;
   vertical-align: center;
 }
-
