@@ -25,9 +25,26 @@ main, .container, .content, .page, .home {
   width: calc(100% + 40px); height: auto;
 }
 
+.container .info :is(img.icon, svg.icon) {
+  width:28px;
+  height:28px;
+  margin:0 5px 0 0;
+  display:inline-block;
+  line-height:1.5;
+  font-size:var(--body-size,16px);
+}
+
+.container .info{
+  margin-top:-60px;
+  display:flex;
+  align-items:flex-start;
+  gap:5px;
+  line-height:1.5;
+}
+
 /* ========== Font System (Pretendard) ========== */
 :root{
-  --font-sans: 'Pretendard', 'Noto Sans KR', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-sans: 'Pretendard';
 
   --fs-title: 32px;   --fw-title: 700; /* Bold */
   --fs-sub:   24px;   --fw-sub:   600; /* SemiBold */
@@ -38,19 +55,19 @@ main, .container, .content, .page, .home {
   --lh-body:  1.6;
 }
 
-/* 본문 기본(스케일 반영) — 기존 규칙이 있으면 그대로 두고, 없으면 사용 */
+/* 본문 기본(스케일 반영) */
 :is(main, .container, .content, .page, .home){
   font-family: var(--font-sans);
 }
 
-/* 타입스타일 (네가 쓰는 클래스 이름 그대로 매핑) */
+/* 타입스타일 */
 .text-title, .title{
   font-family: var(--font-sans);
   font-size: calc(var(--fs-title) * var(--content-scale));
   font-weight: var(--fw-title);
   line-height: var(--lh-title);
   letter-spacing: -0.01em;
-  margin-bottom: calc(20px * var(--content-scale));
+  margin-bottom: calc(40px * var(--content-scale));
 }
 
 .text-subtitle, .subtitle{
@@ -67,7 +84,7 @@ main, .container, .content, .page, .home {
   font-size: calc(var(--fs-body) * var(--content-scale));
   font-weight: var(--fw-body);
   line-height: var(--lh-body);
-  margin-bottom: calc(10px * var(--content-scale));
+  margin-bottom: calc(5px * var(--content-scale));
 }
 
 
@@ -123,9 +140,9 @@ main, .container, .content, .page, .home {
 /* 다크모드일 때 푸터 색 반전 */
 html.dark-mode .footer-accessibility,
 body.dark-mode .footer-accessibility {
-  background:#111 !important;   /* 어두운 바탕 */
-  color:#fff !important;        /* 밝은 글자 */
-  border-top:1px solid #444 !important; /* 선도 어둡게 */
+  background:#111 !important;
+  color:#fff !important;
+  border-top:1px solid #444 !important;
 }
 
 /* 라벨은 기존에 #000로 고정돼 있으니 덮어쓰기 */
@@ -249,26 +266,52 @@ html.dark-mode .footer-accessibility {
   border-top: none;
 }
 
-/* 페이지 맨 아래 고지 문구 */
+:root { --side-gap: 20px; }
+
+:root { --side-gap: 20px; }
+
+/* 모바일 포함: 항상 좌우 20px (iOS 노치 있으면 더 벌림) */
 .site-legal{
-  font-family: 'Pretendard', sans-serif;
+  box-sizing: border-box;
+  width: auto;
+  margin: 24px
+          max(var(--side-gap), env(safe-area-inset-right))
+          20px
+          max(var(--side-gap), env(safe-area-inset-left));
+  padding: 0;
+  text-align: left;
   font-size: 12px;
   line-height: 1.5;
-  color: #000000;
-  text-align: left;
-  max-width: 1200px;
-  padding: 0 30px;
-  margin: auto 0;
-  word-break: keep-all;
+  line-break: strict;
 }
+
+/* 데스크톱 스크롤바로 인한 좌우 비대칭 방지 */
+html { scrollbar-gutter: stable both-edges; }
+
 /* 다크모드 색 */
-html.dark-mode .site-legal,
-body.dark-mode .site-legal{ color:#bbb; }
+html.dark-mode .site-legal { color:#ffffff; }
 
-/* 고정 푸터에 안 가리도록 body 하단 여백(없으면 추가) */
-:root { --footer-h: 10px; }
-html, body { padding-bottom: var(--footer-h); } /* margin-bottom 말고 padding-bottom! */
+html.dark-mode .info-label {
+  background-color: #fff;
+  color: #333;
+}
 
+.info {
+  font-family: 'Pretendard', sans-serif;
+  font-size: calc(14px * var(--content-scale));
+  line-height: 1.5;
+}
 
-
+.info-label {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: calc(16px * var(--content-scale));
+  padding: 4px 14px;
+  background-color: #246ff4;
+  color: #fff;
+  border-radius: 50px;
+  margin-right: 5px;
+  vertical-align: center;
+}
 
