@@ -99,7 +99,7 @@ main, .container, .content, .page, .home {
   font-size: calc(12px * var(--content-scale));
   font-weight: 500;
   line-height: 1.4;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   color: #000000;
 }
 
