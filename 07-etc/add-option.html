@@ -19,6 +19,18 @@
       display: block;
     }
   </style>
+  <script>
+    function openKakaoChannel() {
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.indexOf("android") > -1) {
+        location.href = "intent://pf.kakao.com/_NBxdXxb#Intent;scheme=https;package=com.kakao.talk;end";
+      } else if (ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1) {
+        location.href = "https://pf.kakao.com/_NBxdXxb";
+      } else {
+        location.href = "https://pf.kakao.com/_NBxdXxb"; // 기본
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -34,22 +46,9 @@
       <div class="body-text">
         신규 옵션 추가의 경우 아래 카카오톡 상담하기 버튼으로 문의해 주세요.
       </div>
-
-<script>
-  function openKakaoChannel() {
-    var ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf("android") > -1) {
-      location.href = "intent://pf.kakao.com/_NBxdXxb#Intent;scheme=https;package=com.kakao.talk;end";
-    } else if (ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1) {
-      location.href = "https://pf.kakao.com/_NBxdXxb";
-    } else {
-      location.href = "https://pf.kakao.com/_NBxdXxb"; // 기본
-    }
-  }
-</script>
       
       <!-- 링크 버튼 -->
-      <a href="http://pf.kakao.com/_NBxdXxb" target="_blank" class="link-button">
+      <a href="javascript:void(0);" class="link-button" onclick="openKakaoChannel()">
         <img src="add-option/1.svg" alt="신규 옵션 추가 버튼">
       </a>
 
@@ -59,4 +58,3 @@
 
 </body>
 </html>
-
