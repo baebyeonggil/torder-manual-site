@@ -438,3 +438,24 @@ html.dark-mode .info-label {
 .group {
   margin-bottom: 80px;
 }
+
+/* 화면 중앙 배치 */
+.center-stage{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+}
+
+/* 클릭 영역 */
+.yt-button{ display:inline-block; }
+
+/* 397×118 비율 유지하며 축소 대응(큰 화면에선 397px로 고정) */
+.yt-img{
+  display:block;
+  width: min(397px, 100%);
+  height: auto;
+  padding: 0 20px;
+  aspect-ratio: 397 / 118;
+}
